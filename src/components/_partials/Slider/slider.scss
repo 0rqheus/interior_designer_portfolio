@@ -1,0 +1,31 @@
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  
+    &__img {
+      height: 100%;
+      margin:auto;
+    }
+  
+    &__arrow-icon {
+      width: 10%;
+      height: 20%;
+      position: absolute;
+      right: 0px;
+      border:none;
+      opacity: 0.7;
+      filter: invert(80%);
+    
+      &:hover {
+        filter: none;
+      }
+    
+      &_left {
+        transform: scaleX(-1);
+        left: 0px;
+      }
+    }
+}

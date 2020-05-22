@@ -1,0 +1,37 @@
+$main-color: dodgerblue;
+$main-font-size: 18px;
+
+.about {
+    display: flex;
+
+    &__img-container{
+        background-color: lighten($main-color, 40%);
+        min-height: 93vh;
+    }
+
+    &__person-img {
+        max-width: 50vw;
+        height: 40vh;
+        float: left;
+        margin: 5vh 5vw 0vh 5vw;
+    }
+
+    &__info{
+        padding: 35px;   
+    }
+
+    &__header {
+        margin-top: 40px;
+        margin-bottom: 5px;
+        font-size: 24px;
+        color: $main-color;
+    }
+
+    &__list {
+        padding-left: 15px;
+    }
+
+    &__description {
+        font-size: $main-font-size;
+    }
+}

@@ -1,0 +1,114 @@
+$modal-width: 45vw;
+$modal-min-height: 15vh;
+
+$modal-background: rgba(0, 0, 0, 0.3);
+$modal-container-background: white;
+$header-color: dodgerblue;
+$border-color: black;
+$warning-color: rgb(255, 94, 94);
+
+$header-font-size: 22px;
+$main-font-size: 18px;
+$border-size: 2px;
+$warning-font-size: 14px;
+
+$modal-top-margin: 30vh;
+$content-width: 40;
+
+.modal {
+    position: fixed;
+    top:0px;
+    background: $modal-background;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+
+    &_hidden {
+        display: none;
+    }
+
+    &__container {
+        width: $modal-width;
+        min-height: $modal-min-height;
+        position: relative;
+        margin: auto;
+        margin-top: $modal-top-margin;
+        // overflow-y: scroll;
+        border: $border-size solid $border-color;
+        background: $modal-container-background;
+        opacity: 1;
+    }
+
+    &__close-btn{
+        position: absolute;
+        top:0px;
+        right:0px;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+
+.modal-content {
+    width: $content-width;
+    margin: auto;
+    padding: 10px;
+    font-size: $main-font-size;
+    
+    &__header {
+        text-align: center;
+        font-size: $header-font-size;
+        color: $header-color;
+    }
+
+    &__warning {
+        margin-top: 20px;
+        color: $warning-color;
+        font-size: $warning-font-size;
+    }
+}
+
+.modal-form {
+
+    // height: 32vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    &__container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__input {
+        width: $content-width * 1vw;
+        height: 30px;
+        padding: 5px;
+        font-size: 16px;
+        border: $border-size solid $border-color;
+    }
+
+    &__textarea {
+        width: $content-width * 1vw;
+        padding: 5px;
+        font-size: 16px;
+        border: $border-size solid $border-color;
+    }
+
+    &__submit-btn {
+        width: 120px;
+        height: 40px;
+        margin-top: 30px;
+        border: $border-size solid $border-color;
+        background-color: transparent;
+
+        &:hover {
+            background-color: $border-color;
+            color: white;
+        }
+    }
+}

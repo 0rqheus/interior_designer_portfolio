@@ -1,0 +1,19 @@
+.error {
+    &__not-found {
+        height:100vh;
+        width: 100vw;
+        position: absolute;
+        top:0px;
+        // display: flex;
+        // align-items: center;
+        background-image: url("../../assets/images/404.jpeg");
+        background-size: 100%;
+        z-index: 5;
+    }
+
+    &__header {
+        padding: 30px;
+        font-size: 500%;
+        color: white;
+    }
+}

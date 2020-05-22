@@ -1,0 +1,29 @@
+$main-color: dodgerblue;
+$main-font-size: 18px;
+
+.contacts {
+    padding-top: 20px;
+    width: 50vw;
+    min-height: 93vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+
+    &__text {
+        font-size: $main-font-size;
+    }
+
+    &__appointment-link {
+        text-decoration: none;
+        color: $main-color;
+    }
+}
+
+.location {
+
+    &__map {
+        width: 450px;
+        height: 350px;
+    }
+}

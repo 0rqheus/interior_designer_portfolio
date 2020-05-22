@@ -1,0 +1,67 @@
+$main-color: dodgerblue;
+$secondary-color: black;
+
+$header-font-size:36px;
+$price-font-size: 30px;
+$description-font-size: 20px;
+
+$main-indent: 2%;
+$info-content-margin: 10px;
+
+.work {
+    min-height: 93vh;
+}
+
+.work-slider {
+    width: 50vw;
+    height: 50vh;
+    padding: $main-indent;
+    margin-right: $main-indent;
+    float: left;
+    // background-color: lighten($main-color, 40%);
+}
+
+.work-info{
+    padding: $main-indent;
+
+    &__name {
+        text-align: center;
+        font-size: $header-font-size;
+        margin: $info-content-margin;
+    }
+
+    &__pricebar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: $info-content-margin * 3;
+
+        &-price {
+            color: $main-color;
+            font-weight: bold;
+            font-size: $price-font-size;
+            padding-top: 5px;
+        }
+
+        &-buy-btn {
+            background-color: transparent;
+            border: 2px solid $secondary-color;
+            margin-left: $info-content-margin * 3;
+            width: 100px;
+            height: 40px;
+            font-weight: bold;
+
+            &:hover {
+                background-color: $main-color;
+                border: none;
+                color: white;
+            }
+        }
+
+    }
+
+    &__description {
+        line-height: 200%;
+        font-size: $description-font-size;
+    }
+}

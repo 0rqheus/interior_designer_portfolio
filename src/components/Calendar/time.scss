@@ -1,0 +1,26 @@
+$booked-hour-background-color: rgb(233, 96, 96);
+$border-color: black;
+
+.time {
+    width: 14.5vw;
+    border-right: 1px solid $border-color;
+
+    &__title {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    &__list {
+        list-style-type: none;
+        padding-right: 2vw;
+        padding-left: 2vw;
+    }
+
+    &__item {
+        font-size: 16px;
+    }
+
+    &__item_booked {
+        background-color: $booked-hour-background-color;
+    }
+}

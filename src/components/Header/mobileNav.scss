@@ -1,0 +1,61 @@
+$main-color: dodgerblue;
+$secondary-color: white;
+$border-color: black;
+
+
+.mobile-menu-nav {
+
+    display: none;
+
+    &__logo {
+        font-size: 24px;
+        color: $secondary-color;
+    }
+}
+
+.mobile-menu-control-bar {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.mobile-menu-list {
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    margin: 0px;
+    padding: 0px;
+
+    list-style-type: none;
+    background-color: $secondary-color;
+
+    &_hidden {
+        display: none;
+    }
+
+    &__item {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        // border-right: 2px solid $border-color;
+    }
+    
+    // &__item:last-child {
+    //     border-right: none;
+    // }
+    
+    &__link {
+        text-decoration: none;
+        color: $border-color;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .mobile-menu-nav {
+        display: block;
+    }
+}

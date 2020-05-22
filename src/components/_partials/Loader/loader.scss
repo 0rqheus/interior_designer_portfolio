@@ -1,0 +1,66 @@
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-square {
+        width: 1em;
+        height: 1em;
+        position: absolute;
+        border: 5px solid black;
+        font-size: 1000%;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+
+        &_front {
+            animation-name: front-loader;
+        }
+
+        &_back {
+            animation-name: front-loader;
+            animation-delay: 1s;
+        }
+
+        &_right {
+            animation-name: right-loader;
+        }
+
+        &_left {
+            animation-name: left-loader;
+        }
+    }
+}
+  
+@keyframes front-loader {
+    0% {
+        transform: scaleX(1);
+        border-width: 5px;
+    }
+    50% {
+        transform: scaleX(0.01);
+        border-width: 5px 30px;
+    }
+    100% {
+        transform: scaleX(1);
+        border-width: 5px;
+    }  
+}
+  
+@keyframes right-loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+  
+  
+@keyframes left-loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg)
+    }
+}

@@ -1,0 +1,53 @@
+$border-color: black;
+
+.works {
+  min-height: 93vh;
+}
+
+.works-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 35vh);
+    grid-gap: 10px;
+}
+  
+.works-control-bar {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 40vw;
+  
+    &__select {
+      padding: 5px;
+      border-radius: 2px;
+      background-color: white;
+      border: 2px solid $border-color;
+      appearance:none;
+    }
+  
+    &__search-input {
+      border-radius: 2px;
+      width: 23vw;
+      border: 2px solid $border-color;
+    }
+}
+
+.pagination-menu {
+    width: 30vh;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  
+    &__btn {
+      width: 40px;
+      padding: 0px;
+      border: 2px solid $border-color;
+      cursor: pointer;
+    
+      &_left {
+        transform: scaleX(-1);
+      }
+    }
+}

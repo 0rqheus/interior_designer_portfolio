@@ -1,0 +1,25 @@
+$bg-color: black;
+$color: white;
+
+.breadcrumbs {
+    background: $bg-color;
+    position: sticky;
+    top: 6vh;
+
+    &__paths-list {
+        display: flex;
+        align-items: center;
+        margin: 0px;
+        padding: 7px 0px 7px 20px;
+        list-style-type: none;
+    }
+
+    &__item {
+        margin-right: 2%;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $color;
+    }
+}

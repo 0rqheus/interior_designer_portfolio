@@ -1,0 +1,112 @@
+import React from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
+import { showModal } from "../../actions";
+import { storage, db } from "../../firebase";
+
+import "./work.scss";
+
+import Modal from "../_partials/Modal/Modal";
+import Slider from "../_partials/Slider/Slider";
+import BuyModalContent from "./BuyModalContent";
+import Loader from "../_partials/Loader/Loader";
+import BreadCrumbs from "../_partials/Breadcrumbs/Breadcrumbs";
+
+class Work extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            item: {},
+            imageURLs:[]
+        }
+
+        this.uploadData(props.match.params.id);
+    }
+
+    uploadData = (id) => {
+        db.collection("works").doc(id)
+        .get()
+        .then(doc => {
+            if(doc.exists) {
+                this.setState({
+                    item: {id, ...doc.data()}
+                });
+
+                this.uploadImages();
+            } else {
+                this.setState({
+                    item: null
+                });
+            }
+        })
+        .catch(console.error);
+    }
+
+    uploadImages = () => {
+        this.state.item.photos.forEach(imgName => {
+
+            storage.ref().child(imgName).getDownloadURL()
+                .then(url => {
+                    this.setState({
+                        imageURLs: [...this.state.imageURLs, url]
+                    })
+                })
+                .catch(console.error);
+
+        })
+    }
+
+    handleClick = () => {
+        this.props.showModal();
+    }
+
+
+    render() {
+
+        if(this.state.item === null) {
+            return <Redirect to="/404"/>
+        }
+
+        if(this.state.item.id !== undefined || (this.state.imageURLs.length !== this.state.item.photos.length)) {
+            return <Loader width="95vw" height="95vh"/>
+        }
+
+        return (
+            <>
+                <BreadCrumbs/>
+                <div className="work">
+                
+                    <Modal content={() => <BuyModalContent workId={this.props.match.params.id}/>}/>
+
+                    <Slider containerClass={"work-slider"} photos={this.state.imageURLs}/>
+
+                    <div className="work-info">
+                        <h5 className="work-info__name">{this.state.item.title}</h5>
+
+                        <div className="work-info__pricebar">
+                            <span className="work-info__pricebar-price">${this.state.item.price}</span>
+
+                            <button className="work-info__pricebar-buy-btn" onClick={this.handleClick}>Buy</button>
+                        </div>
+
+                        <p className="work-info__description">{this.state.item.description}</p>
+                    </div>
+
+                </div>
+            </>
+        );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        display: state.modalDisplayStatus
+    };
+}
+
+
+const mapDispatchToProps = { showModal };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Work);
