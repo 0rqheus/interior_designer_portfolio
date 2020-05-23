@@ -11,7 +11,7 @@ const BreadCrumbs = () => {
         const link = arr.slice(0, index+1).join("/");
 
         return (
-            <li className="breadcrumbs__item">
+            <li key={item} className="breadcrumbs__item">
                 <Link to={link} className="breadcrumbs__link">
                     {index === 0 ? "/" : item}
                 </Link>

@@ -14,9 +14,9 @@ const Footer = () => {
       {src: facebookLogo, alt: "facebook logo", href: "http://fb.com"},
       {src: instagramLogo, alt: "instagram logo", href: "http://instagram.com"},
       {src: linkedInLogo, alt: "linkedin logo", href: "http://linkedin.com"},
-    ].map( item => {
+    ].map( (item, index) => {
       return (
-        <li>
+        <li key={index}>
           <a className="footer__link" href={item.href}>
             <img className="footer__link-icon" src={item.src} alt={item.alt} />
           </a>

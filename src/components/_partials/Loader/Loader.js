@@ -8,11 +8,11 @@ const Loader = (props) => {
     const height = props.height || "100%";
 
     return (
-        <div class="loader" style={{height: height, width: width}}>
-            <div class="loader-square loader-square_front"></div>
-            <div class="loader-square loader-square_back"></div>
-            <div class="loader-square loader-square_left"></div>
-            <div class="loader-square loader-square_right"></div>
+        <div className="loader" style={{height: height, width: width}}>
+            <div className="loader-square loader-square_front"></div>
+            <div className="loader-square loader-square_back"></div>
+            <div className="loader-square loader-square_left"></div>
+            <div className="loader-square loader-square_right"></div>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 
 export default class BuyModalContent extends React.Component {
 
@@ -34,6 +34,10 @@ export default class BuyModalContent extends React.Component {
             )
         }
 
+        const contacts = auth.currentUser !== null
+                            ? auth.currentUser.email
+                            : "";
+
         return (
             <div className="modal-content">
                 <h4 className="modal-content__header">New Order</h4>
@@ -41,7 +45,7 @@ export default class BuyModalContent extends React.Component {
                 <form className="modal-form">
                     <div className="modal-form-container">
                         <label>Your contacts:</label>
-                        <input className="modal-form__input" ref="contacts" placeholder="Email, phone, etc." />
+                        <input className="modal-form__input" ref="contacts" placeholder="Email, phone, etc." defaultValue={contacts}/>
                     </div>
 
                     <button className="modal-form__submit-btn" onClick={this.handleOrder}>Send</button>

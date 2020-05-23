@@ -1,15 +1,15 @@
 import React from "react";
 
-import DefaultNav from "./DefaultNav";
-import MobileNav from "./MobileNav";
+import DefaultNavbar from "./DefaultNavbar";
+import MobileNavbar from "./MobileNavbar";
 
 import "./header.scss";
 
 const Header = () => {
   return (
-    <header className="menu-header">
-      <DefaultNav />
-      <MobileNav />
+    <header className="header">
+      <DefaultNavbar />
+      <MobileNavbar />
     </header>
   );
 }

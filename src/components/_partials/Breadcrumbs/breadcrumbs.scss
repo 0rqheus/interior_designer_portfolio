@@ -5,6 +5,7 @@ $color: white;
     background: $bg-color;
     position: sticky;
     top: 6vh;
+    z-index: 3;
 
     &__paths-list {
         display: flex;

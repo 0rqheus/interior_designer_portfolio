@@ -2,7 +2,6 @@ import React from "react";
 
 import WorksItem from "./WorksItem";
 
-
 const WorkList = (props) => {
 
     if(props.data === null) return null;

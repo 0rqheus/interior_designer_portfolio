@@ -1,5 +1,5 @@
 import React from "react";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { connect } from 'react-redux';
 import { hideModal, setDay } from "../../actions";
 
@@ -40,6 +40,11 @@ class ModalContent extends React.Component {
     }
 
     render() {
+
+        const contacts = auth.currentUser !== null
+                            ? auth.currentUser.email
+                            : "";
+
         return (
             <div className="modal-content">
 
@@ -49,7 +54,7 @@ class ModalContent extends React.Component {
 
                     <div className="modal-form__container">
                         <label>Contacts</label>
-                        <input className="modal-form__input" ref="contacts"/>
+                        <input className="modal-form__input" ref="contacts" value={contacts}/>
                     </div>
 
                     <div className="modal-form__container">

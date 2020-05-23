@@ -9,7 +9,7 @@ import "./work.scss";
 import Modal from "../_partials/Modal/Modal";
 import Slider from "../_partials/Slider/Slider";
 import BuyModalContent from "./BuyModalContent";
-import Loader from "../_partials/Loader/Loader";
+// import Loader from "../_partials/Loader/Loader";
 import BreadCrumbs from "../_partials/Breadcrumbs/Breadcrumbs";
 
 class Work extends React.Component {
@@ -17,12 +17,13 @@ class Work extends React.Component {
     constructor(props) {
         super(props);
 
+        this.uploadData(props.match.params.id);
+
         this.state = {
             item: {},
             imageURLs:[]
         }
 
-        this.uploadData(props.match.params.id);
     }
 
     uploadData = (id) => {
@@ -34,7 +35,7 @@ class Work extends React.Component {
                     item: {id, ...doc.data()}
                 });
 
-                this.uploadImages();
+                this.uploadImages(doc.data().photos);
             } else {
                 this.setState({
                     item: null
@@ -44,8 +45,9 @@ class Work extends React.Component {
         .catch(console.error);
     }
 
-    uploadImages = () => {
-        this.state.item.photos.forEach(imgName => {
+    uploadImages = (photos) => {
+
+        photos.forEach(imgName => {
 
             storage.ref().child(imgName).getDownloadURL()
                 .then(url => {
@@ -69,9 +71,9 @@ class Work extends React.Component {
             return <Redirect to="/404"/>
         }
 
-        if(this.state.item.id !== undefined || (this.state.imageURLs.length !== this.state.item.photos.length)) {
-            return <Loader width="95vw" height="95vh"/>
-        }
+        // if(this.state.item.id !== undefined || (this.state.imageURLs.length !== this.state.item.photos.length)) {
+        //     return <Loader width="95vw" height="95vh"/>
+        // }
 
         return (
             <>
@@ -100,13 +102,6 @@ class Work extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        display: state.modalDisplayStatus
-    };
-}
-
-
 const mapDispatchToProps = { showModal };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Work);
+export default connect(null, mapDispatchToProps)(Work);

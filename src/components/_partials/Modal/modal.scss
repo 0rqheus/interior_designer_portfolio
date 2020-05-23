@@ -3,7 +3,7 @@ $modal-min-height: 15vh;
 
 $modal-background: rgba(0, 0, 0, 0.3);
 $modal-container-background: white;
-$header-color: dodgerblue;
+$main-color: dodgerblue;
 $border-color: black;
 $warning-color: rgb(255, 94, 94);
 
@@ -58,13 +58,28 @@ $content-width: 40;
     &__header {
         text-align: center;
         font-size: $header-font-size;
-        color: $header-color;
+        color: $main-color;
     }
 
     &__warning {
         margin-top: 20px;
         color: $warning-color;
         font-size: $warning-font-size;
+    }
+
+    &__btn {
+        height: 50px;
+        margin: auto;
+        border: $border-size solid $main-color;
+        background-color: transparent;
+
+        &:hover {
+            background-color: $main-color;
+        }
+
+        &_large {
+            width: 100%;
+        }
     }
 }
 

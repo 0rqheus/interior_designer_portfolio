@@ -16,7 +16,7 @@ class Modal extends React.Component {
                     <div className="modal__container">
                         <span className="modal__close-btn" onClick={this.handleClick}>&times;</span>
     
-                        <this.props.content data={this.props.data}/>
+                        <this.props.content/>
                     </div>
             </div>
         );
@@ -26,8 +26,7 @@ class Modal extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        display: state.modalDisplayStatus,
-        data: state.data
+        display: state.modalDisplayStatus
     };
 }
 

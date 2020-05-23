@@ -3,7 +3,8 @@ import { createStore } from 'redux'
 const initialStore = {
   modalDisplayStatus: false,
   chosenDate: null,
-  day: null
+  day: null,
+  user: null
 }
 
 const reducer = (state = initialStore, action) => {
@@ -24,12 +25,17 @@ const reducer = (state = initialStore, action) => {
       return {
         ...state,
         chosenDate: action.date
-      }
+      };
     case "SET_DAY":
       return {
         ...state,
         day: action.day
       };
+    case "SET_USER":
+      return {
+        ...state,
+        user: action.user
+      }
     default:
       return state;
   }
