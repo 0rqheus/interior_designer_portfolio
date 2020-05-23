@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 import Dropdown from "../_partials/Dropdown/Dropdown";
 import Auth from "./Auth";
 

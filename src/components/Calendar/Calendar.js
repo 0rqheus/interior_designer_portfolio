@@ -1,7 +1,7 @@
 import React from "react";
 import { db } from "../../firebase";
 import { connect } from 'react-redux';
-import { setupAppointmentHours, setDay } from "../../actions";
+import { setChosenDate, setDayAppointments, setDayToNull } from "../../actions";
 
 import "./calendar.scss";
 
@@ -105,20 +105,18 @@ class Calendar extends React.Component {
         if (target.nodeName === "TD" && !target.classList.contains("calendar__disabled-day")) {
             // set time
             const date = this.state.date;
-            this.props.setupAppointmentHours(new Date(date.getFullYear(), date.getMonth(), target.innerText));
+            this.props.setChosenDate(new Date(date.getFullYear(), date.getMonth(), target.innerText));
 
-            // set
+            // set day appointments
             db.collection("appointments")
                 .where("month", "==", date.getMonth())
                 .where("day", "==", Number(target.innerText))
                 .get()
                 .then(querySnapshot => {
 
-                    const doc = querySnapshot.docs.length !== 0 
-                                ? { id: querySnapshot.docs[0].id, hours: querySnapshot.docs[0].data().hours }
-                                : null;
+                    if(querySnapshot.docs.length !== 0) this.props.setDayAppointments(querySnapshot.docs[0].id, querySnapshot.docs[0].data().hours)
+                    else this.props.setDayToNull();
 
-                    this.props.setDay(doc);
                 })
                 .catch(console.error);
 
@@ -170,12 +168,6 @@ class Calendar extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
-    return {
-        date: state.chosenDate
-    }
-}
+const mapDispatchToProps = { setChosenDate, setDayAppointments, setDayToNull }
 
-const mapDispatchToProps = { setupAppointmentHours, setDay }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
+export default connect(null, mapDispatchToProps)(Calendar);

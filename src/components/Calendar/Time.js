@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { showModal, setupAppointmentHours } from "../../actions";
+import { toggleModal, setChosenDate } from "../../actions";
 
 import Modal from "../_partials/Modal/Modal";
 import AppointmentModalContent from "./AppointmentModalContent"
@@ -8,6 +8,7 @@ import Hours from "./Hours";
 
 import "./time.scss"
 
+const MODAL_ID = "appointmentModal";
 
 class Time extends React.Component {
 
@@ -15,8 +16,8 @@ class Time extends React.Component {
 
         const chosenDate = new Date(this.props.date.getFullYear(), this.props.date.getMonth(), this.props.date.getDate(), i);
 
-        this.props.setupAppointmentHours(chosenDate);
-        this.props.showModal();
+        this.props.setChosenDate(chosenDate);
+        this.props.toggleModal(MODAL_ID);
     }
 
     render() {
@@ -25,7 +26,7 @@ class Time extends React.Component {
         return (
             <div className="time">
 
-                <Modal content={() => <AppointmentModalContent/>} />
+                <Modal modalId={MODAL_ID} content={() => <AppointmentModalContent modalId={MODAL_ID}/>} />
 
                 <h4 className="time__title">Time</h4>
 
@@ -50,10 +51,10 @@ class Time extends React.Component {
 const mapStateToProps = (state) => {
     return {
         date: state.chosenDate,
-        day: state.day
+        day: state.chosenDay
     };
 }
 
-const mapDispatchToProps = { showModal, setupAppointmentHours };
+const mapDispatchToProps = { toggleModal, setChosenDate };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Time);

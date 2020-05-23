@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
-import { showModal } from "../../actions";
+import { toggleModal } from "../../actions";
 import { storage, db } from "../../firebase";
 
 import "./work.scss";
@@ -11,6 +11,8 @@ import Slider from "../_partials/Slider/Slider";
 import BuyModalContent from "./BuyModalContent";
 // import Loader from "../_partials/Loader/Loader";
 import BreadCrumbs from "../_partials/Breadcrumbs/Breadcrumbs";
+
+const MODAL_ID = "purchaseModal"
 
 class Work extends React.Component {
 
@@ -61,7 +63,7 @@ class Work extends React.Component {
     }
 
     handleClick = () => {
-        this.props.showModal();
+        this.props.toggleModal(MODAL_ID);
     }
 
 
@@ -80,7 +82,7 @@ class Work extends React.Component {
                 <BreadCrumbs/>
                 <div className="work">
                 
-                    <Modal content={() => <BuyModalContent workId={this.props.match.params.id}/>}/>
+                    <Modal modalId={MODAL_ID} content={() => <BuyModalContent workId={this.props.match.params.id}/>}/>
 
                     <Slider containerClass={"work-slider"} photos={this.state.imageURLs}/>
 
@@ -102,6 +104,6 @@ class Work extends React.Component {
     }
 }
 
-const mapDispatchToProps = { showModal };
+const mapDispatchToProps = { toggleModal };
 
 export default connect(null, mapDispatchToProps)(Work);

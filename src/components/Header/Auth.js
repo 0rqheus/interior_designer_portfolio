@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { showModal, hideModal } from "../../actions";
+import { toggleModal } from "../../actions";
 import { auth, googleProvider } from "../../firebase";
 
 import Modal from "../_partials/Modal/Modal"; //
 import AuthModalContent from "./AuthModalContent"; //
 
 import "./auth.scss";
+
+const MODAL_ID = "loginModal";
 
 class Auth extends React.Component {
 
@@ -22,17 +24,18 @@ class Auth extends React.Component {
 
         auth.signInWithPopup(googleProvider)
             .then( result => {
+
+                this.props.toggleModal(MODAL_ID);
+
                 this.setState({
                     user: result.user
                 });
-
-                this.props.hideModal();
             })
             .catch(console.error);
     }
 
     handleLogin = () => {
-        this.props.showModal();
+        this.props.toggleModal(MODAL_ID);
     }
 
     handleLogout = () => {
@@ -51,7 +54,7 @@ class Auth extends React.Component {
 
         return (
             <>
-                <Modal content={() => <AuthModalContent signInWithGoogle={this.signInWithGoogle}/>}/> 
+                <Modal modalId={MODAL_ID} content={() => <AuthModalContent signInWithGoogle={this.signInWithGoogle}/>}/> 
 
                 <Content 
                     user={this.state.user} 
@@ -63,6 +66,6 @@ class Auth extends React.Component {
     }
 }
 
-const mapDispatchToProps = { showModal, hideModal };
+const mapDispatchToProps = { toggleModal };
 
 export default connect(null, mapDispatchToProps)(Auth);

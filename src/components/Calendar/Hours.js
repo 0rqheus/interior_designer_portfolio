@@ -8,7 +8,7 @@ const Hours = (props) => {
     const isHourBooked = ( () => {
         if(props.day !== null) {
             return (hour) => {
-                        if(props.day.hours.find(item => item.hour === hour)) {
+                        if(props.day.appointmentHours.find(item => item.hour === hour)) {
                             return "time__item time__item_booked";
                         } else {
                             return "time__item";

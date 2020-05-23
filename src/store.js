@@ -1,40 +1,49 @@
 import { createStore } from 'redux'
 
+const modals = [
+  ["purchaseModal", false],
+  ["appointmentModal", false],
+  ["loginModal", false]
+];
+
 const initialStore = {
-  modalDisplayStatus: false,
+  modals: new Map(modals),
   chosenDate: null,
-  day: null,
-  user: null
+  chosenDay: null
 }
 
 const reducer = (state = initialStore, action) => {
 
   switch (action.type) {
-    case "SHOW_MODAL":
+    case "TOGGLE_MODAL":
+
+      const oldValue = state.modals.get(action.id);
+
+      let modals = new Map(state.modals);
+      modals.set(action.id, !oldValue);
+
       return {
         ...state,
-        modalDisplayStatus: true,
-        data: action.data
+        modals: modals
       };
-    case "HIDE_MODAL":
-      return {
-        ...state,
-        modalDisplayStatus: false
-      };
-    case "SETUP_APPOINTMENT_HOURS":
+
+    case "SET_CHOSEN_DATE":
       return {
         ...state,
         chosenDate: action.date
       };
-    case "SET_DAY":
+    case "SET_DAY_APPOINTMENTS":
       return {
         ...state,
-        day: action.day
+        chosenDay: {
+          id: action.dayId,
+          appointmentHours: action.appointmentHours
+        }
       };
-    case "SET_USER":
+    case "SET_DAY_TO_NULL":
       return {
         ...state,
-        user: action.user
+        chosenDay: null
       }
     default:
       return state;

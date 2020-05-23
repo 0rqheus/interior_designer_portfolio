@@ -1,18 +1,18 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { hideModal } from "../../../actions";
+import { toggleModal } from "../../../actions";
 
 import "./modal.scss"
 
 class Modal extends React.Component {
 
     handleClick = () => {
-        this.props.hideModal();
+        this.props.toggleModal(this.props.modalId);
     }
 
     render() {
         return (
-            <div className={`modal ${this.props.display ? "" : "modal_hidden"}`}>
+            <div className={`modal ${this.props.displayStatuses.get(this.props.modalId) ? "" : "modal_hidden"}`}>
                     <div className="modal__container">
                         <span className="modal__close-btn" onClick={this.handleClick}>&times;</span>
     
@@ -26,11 +26,11 @@ class Modal extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        display: state.modalDisplayStatus
+        displayStatuses: state.modals
     };
 }
 
 
-const mapDispatchToProps = { hideModal };
+const mapDispatchToProps = { toggleModal };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

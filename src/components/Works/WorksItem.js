@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {storage} from "../../firebase";
+import { storage } from "../../firebase";
 
 import "./worksItem.scss";
 

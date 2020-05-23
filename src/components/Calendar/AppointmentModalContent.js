@@ -1,7 +1,7 @@
 import React from "react";
 import { db, auth } from "../../firebase";
 import { connect } from 'react-redux';
-import { hideModal, setDay } from "../../actions";
+import { toggleModal, setDayAppointments } from "../../actions";
 
 class ModalContent extends React.Component {
 
@@ -18,7 +18,7 @@ class ModalContent extends React.Component {
 
         if(day !== null) {
             db.collection("appointments").day(day.id).update({
-                hours: [...day.hours, newAppointment]
+                hours: [...day.appointmentHours, newAppointment]
             })
         } else {
             db.collection("appointments").add({
@@ -28,15 +28,9 @@ class ModalContent extends React.Component {
             });
         }
 
-        this.props.setDay({
-            id: day.id,
-            hours: [
-                ...day.hours,
-                newAppointment
-            ]
-        })
+        this.props.setDayAppointments(day.id, [...day.appointmentHours, newAppointment])
 
-        this.props.hideModal();
+        this.props.toggleModal(this.props.modalId);
     }
 
     render() {
@@ -54,7 +48,7 @@ class ModalContent extends React.Component {
 
                     <div className="modal-form__container">
                         <label>Contacts</label>
-                        <input className="modal-form__input" ref="contacts" value={contacts}/>
+                        <input className="modal-form__input" ref="contacts" defaultValue={contacts}/>
                     </div>
 
                     <div className="modal-form__container">
@@ -74,12 +68,12 @@ class ModalContent extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        day: state.day,
+        day: state.chosenDay,
         date: state.chosenDate
     };
 }
 
 
-const mapDispatchToProps = { hideModal, setDay };
+const mapDispatchToProps = { toggleModal, setDayAppointments };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalContent);
