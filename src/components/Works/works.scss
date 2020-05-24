@@ -1,4 +1,5 @@
 $border-color: black;
+$border-size: 2px;
 
 .works {
   min-height: 93vh;
@@ -9,39 +10,46 @@ $border-color: black;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 35vh);
     grid-gap: 10px;
+    padding: 0px;
 }
   
 .works-control-bar {
     padding: 5px;
     display: flex;
     justify-content: space-between;
-    width: 40vw;
+    width: 70vw;
   
     &__select {
       padding: 5px;
-      border-radius: 2px;
       background-color: white;
-      border: 2px solid $border-color;
+      border: $border-size solid $border-color;
       appearance:none;
     }
   
     &__search-input {
-      border-radius: 2px;
-      width: 23vw;
-      border: 2px solid $border-color;
+      padding: 5px;
+      width: 50vw;
+      border: $border-size solid $border-color;
+    }
+
+    &__selects-container {
+      display: flex;
+      justify-content: space-around;
+      width: 18vw;
     }
 }
 
 .pagination-menu {
-    width: 30vh;
+    width: 30vw;
     display: flex;
     justify-content: space-between;
     margin: auto;
     margin-top: 5vh;
     margin-bottom: 5vh;
   
-    &__btn {
-      width: 40px;
+    &__arrow {
+      width: 50px;
+      height: 50px;
       padding: 0px;
       border: 2px solid $border-color;
       cursor: pointer;
@@ -50,4 +58,54 @@ $border-color: black;
         transform: scaleX(-1);
       }
     }
+}
+
+@media screen and (max-width: 1100px) {
+  .works-list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3);
+  }
+
+  .pagination-menu {
+    width: 60vw;
+  }
+
+  .works-control-bar {
+    width: 80vw;
+
+    &__selects-container {
+      width: 30vw;
+    }
+  
+    &__search-input {
+      width: 45vw;
+    }
+  }
+
+}
+
+@media screen and (max-width: 700px) {
+  .works-list {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+
+  .works-control-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 92vw;
+
+    &__selects-container {
+      width: 90vw;
+      margin-bottom: 10px;
+    }
+
+  
+    &__search-input {
+      width: 90vw;
+    }
+  }
+
 }

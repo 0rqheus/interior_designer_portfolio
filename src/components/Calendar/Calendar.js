@@ -149,6 +149,7 @@ class Calendar extends React.Component {
     render() {
         return (
             <table onClick={this.handleClick} className="calendar">
+
                 <thead>
                     <tr className="calendar__header">
                         <th className="calendar__nav-arrow" onClick={this.handlePrevClick}>{"<<"}</th>
@@ -159,9 +160,11 @@ class Calendar extends React.Component {
                         <Weekdays />
                     </tr>
                 </thead>
+
                 <tbody>
                     <Weeks days={this.getDays(this.state.date)} />
                 </tbody>
+                
             </table>
         );
     }

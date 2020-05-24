@@ -1,27 +1,31 @@
 $main-color: dodgerblue;
 $secondary-color: white;
-$border-color: black;
 
+$border-color: black;
+$border-size: 2px;
+
+$font-size: 18px;
 
 .mobile-nav {
-
+    width: 100vw;
     display: none;
 
     &__logo {
-        font-size: 24px;
+        font-size: $font-size + 6px;
         color: $secondary-color;
+        text-decoration: none;
     }
 }
 
 .mobile-nav-control-bar {
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
 .mobile-nav-list {
-    width: 100vw;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -30,6 +34,8 @@ $border-color: black;
 
     margin: 0px;
     padding: 0px;
+
+    box-shadow: 10px 5px 5px darken($secondary-color, 20%);
 
     list-style-type: none;
     background-color: $secondary-color;
@@ -41,15 +47,34 @@ $border-color: black;
     &__item {
         padding-top: 15px;
         padding-bottom: 15px;
-
-        &_auth:first-child {
-            border-top: 2px solid $border-color;
-        }
     }
     
     &__link {
         text-decoration: none;
         color: $border-color;
+    }
+
+    &__auth {
+        border-top: $border-size solid $border-color;
+        text-align: center;
+    }
+}
+
+.mobile-user-info {
+
+    display: flex;
+    align-items: center;
+
+    &__img {
+        width: 4vh;
+        height: 4vh;
+        border-radius: 50%;
+    }
+
+    &__name {
+        color: lighten(black, 20%);
+        font-size: $font-size - 2px;
+        margin-right: 10px;
     }
 }
 

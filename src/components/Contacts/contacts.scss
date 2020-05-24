@@ -1,20 +1,22 @@
 $main-color: dodgerblue;
-$main-font-size: 18px;
+$main-font-size: 20px;
 
 .contacts {
-    padding-top: 20px;
-    width: 50vw;
+    padding-top: 2vh;
     min-height: 93vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
+    justify-content: space-around;
 
     &__text {
         font-size: $main-font-size;
     }
 
-    &__appointment-link {
+    &__social-networks-list {
+        list-style-type: none;
+        margin-bottom: 5vh;
+    }
+
+    &__link {
         text-decoration: none;
         color: $main-color;
     }
@@ -23,7 +25,29 @@ $main-font-size: 18px;
 .location {
 
     &__map {
-        width: 450px;
-        height: 350px;
+        width: 40vw;
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .contacts {
+        padding: 5%;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .contacts {
+        flex-direction: column;
+        // padding: 5%;
+    }
+
+    .location {
+
+        &__map {
+            width: 90vw;
+            height: 50vh;
+        }
     }
 }

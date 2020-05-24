@@ -5,7 +5,6 @@ $main-font-size: 18px;
     display: flex;
 
     &__img-container{
-        background-color: lighten($main-color, 40%);
         min-height: 93vh;
     }
 
@@ -33,5 +32,33 @@ $main-font-size: 18px;
 
     &__description {
         font-size: $main-font-size;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .about {
+        flex-direction: column;
+        align-items: center;
+
+        &__img-container{
+            background-color: transparent;
+            min-height: 0px;
+        }
+
+        &__person-img {
+            max-width: 90vw;
+            height: auto;
+            float: none;
+            margin: 0px;
+            margin-top: 3vh;
+        }
+
+        &__info{
+            padding-top: 0px;
+        }
+
+        &__header {
+            text-align: center;
+        }
     }
 }

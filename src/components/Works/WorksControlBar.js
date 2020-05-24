@@ -3,6 +3,7 @@ import React from "react";
 const WorksControlBar = (props) => {
     return (
         <div className="works-control-bar">
+        <div className="works-control-bar__selects-container">
             <select className="works-control-bar__select sort-select" onChange={props.handleSort}>
                 <option value="recent">Recent</option>
                 <option value="priceUp">Price up</option>
@@ -15,6 +16,7 @@ const WorksControlBar = (props) => {
                 <option value="minimalism">Minimalism</option>
                 <option value="neoclassic">Neoclassic</option>
             </select>
+        </div>
             <input className="works-control-bar__search-input" onChange={props.handleSearch} />
         </div>
     )
