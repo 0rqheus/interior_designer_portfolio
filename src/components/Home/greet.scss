@@ -5,18 +5,18 @@ $secondary-color: white;
     background-image: url("../../assets/images/home-greet-back.jpg");
     background-position: center;
     color: $secondary-color;
-  
+
     &__content {
-      text-align: center;
-      margin: auto;
-      margin-top: 10vh;
+        text-align: center;
+        margin: auto;
+        margin-top: 10vh;
     }
-  
+
     &__header {
-      font-size: 48px;
+        font-size: 48px;
     }
-  
+
     &__description {
-      font-size: 28px;
+        font-size: 28px;
     }
-  }
+}

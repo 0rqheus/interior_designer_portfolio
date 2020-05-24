@@ -7,10 +7,10 @@ const Dropdown = (props) => {
             <props.target/>
             
             <div className="dropdown__content">
-              <props.content/>
+                <props.content/>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Dropdown;

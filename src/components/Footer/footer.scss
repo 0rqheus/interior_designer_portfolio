@@ -6,62 +6,60 @@ $bg-color: black;
 .footer {
     color: $secondary-color;
     background: $bg-color;
-  
-  &__content {
-    padding: 15px;
-  }
 
-  &__logo {
-    font-size: $main-font-size + 4;
-    color: $main-color;
-  }
-
-  &__contacts {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 5px;
-
-    &-email {
-      font-size: $main-font-size;
-      margin: 0px;
+    &__content {
+        padding: 15px;
     }
 
-    &-socials-list {
-      display: flex;
-      width: 300px;
-      justify-content: space-between;
-      list-style-type: none;
-      padding: 0px;
+    &__logo {
+        font-size: $main-font-size + 4;
+        color: $main-color;
     }
 
-  }
+    &__contacts {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 5px;
 
-  &__link {
-    text-decoration: none;
-  }
+        &-email {
+            font-size: $main-font-size;
+            margin: 0px;
+        }
 
-  &__link-icon {
-    width: 30px;
-    height: 30px;
-  }
+        &-socials-list {
+            display: flex;
+            width: 300px;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0px;
+        }
+    }
 
-  &__rights {
-    text-align: center;
-    margin: 0px;
-    padding: 10px;
-    color: darken($secondary-color, 20%)
-  }
-  
+    &__link {
+        text-decoration: none;
+    }
+
+    &__link-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    &__rights {
+        text-align: center;
+        margin: 0px;
+        padding: 10px;
+        color: darken($secondary-color, 20%);
+    }
 }
 
 @media screen and (max-width: 610px) {
-  .footer__contacts {
-    flex-direction: column;
+    .footer__contacts {
+        flex-direction: column;
 
-    &-email {
-      width: 100%;
-      text-align: left;
+        &-email {
+            width: 100%;
+            text-align: left;
+        }
     }
-  }
 }

@@ -2,7 +2,7 @@ $border-color: black;
 $border-size: 2px;
 
 .works {
-  min-height: 93vh;
+    min-height: 93vh;
 }
 
 .works-list {
@@ -12,30 +12,30 @@ $border-size: 2px;
     grid-gap: 10px;
     padding: 0px;
 }
-  
+
 .works-control-bar {
     padding: 5px;
     display: flex;
     justify-content: space-between;
     width: 70vw;
-  
+
     &__select {
-      padding: 5px;
-      background-color: white;
-      border: $border-size solid $border-color;
-      appearance:none;
+        padding: 5px;
+        background-color: white;
+        border: $border-size solid $border-color;
+        appearance: none;
     }
-  
+
     &__search-input {
-      padding: 5px;
-      width: 50vw;
-      border: $border-size solid $border-color;
+        padding: 5px;
+        width: 50vw;
+        border: $border-size solid $border-color;
     }
 
     &__selects-container {
-      display: flex;
-      justify-content: space-around;
-      width: 18vw;
+        display: flex;
+        justify-content: space-around;
+        width: 18vw;
     }
 }
 
@@ -46,66 +46,63 @@ $border-size: 2px;
     margin: auto;
     margin-top: 5vh;
     margin-bottom: 5vh;
-  
+
     &__arrow {
-      width: 50px;
-      height: 50px;
-      padding: 0px;
-      border: 2px solid $border-color;
-      cursor: pointer;
-    
-      &_left {
-        transform: scaleX(-1);
-      }
+        width: 50px;
+        height: 50px;
+        padding: 0px;
+        border: 2px solid $border-color;
+        cursor: pointer;
+
+        &_left {
+            transform: scaleX(-1);
+        }
     }
 }
 
 @media screen and (max-width: 1100px) {
-  .works-list {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3);
-  }
-
-  .pagination-menu {
-    width: 60vw;
-  }
-
-  .works-control-bar {
-    width: 80vw;
-
-    &__selects-container {
-      width: 30vw;
+    .works-list {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3);
     }
-  
-    &__search-input {
-      width: 45vw;
-    }
-  }
 
+    .pagination-menu {
+        width: 60vw;
+    }
+
+    .works-control-bar {
+        width: 80vw;
+
+        &__selects-container {
+            width: 30vw;
+        }
+
+        &__search-input {
+            width: 45vw;
+        }
+    }
 }
 
 @media screen and (max-width: 700px) {
-  .works-list {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-  }
-
-  .works-control-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-    width: 92vw;
-
-    &__selects-container {
-      width: 90vw;
-      margin-bottom: 10px;
+    .works-list {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, 1fr);
     }
 
-  
-    &__search-input {
-      width: 90vw;
-    }
-  }
+    .works-control-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
 
+        width: 92vw;
+
+        &__selects-container {
+            width: 90vw;
+            margin-bottom: 10px;
+        }
+
+        &__search-input {
+            width: 90vw;
+        }
+    }
 }

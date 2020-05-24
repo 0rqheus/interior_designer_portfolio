@@ -8,6 +8,6 @@ const NotFound = () => {
             <h3 className="error__header">Error 404: Page not found</h3>
         </div>
     );
-}
+};
 
 export default NotFound;

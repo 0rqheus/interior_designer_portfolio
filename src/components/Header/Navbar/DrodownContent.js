@@ -9,6 +9,6 @@ const DropdownContent = () => {
             </li>
         </ul>
     );
-}
+};
 
 export default DropdownContent;

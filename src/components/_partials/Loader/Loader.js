@@ -14,7 +14,7 @@ const Loader = (props) => {
             <div className="loader-square loader-square_left"></div>
             <div className="loader-square loader-square_right"></div>
         </div>
-    )
-}
+    );
+};
 
 export default Loader;

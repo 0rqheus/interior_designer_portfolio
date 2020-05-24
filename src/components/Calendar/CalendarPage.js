@@ -2,7 +2,7 @@ import React from "react";
 
 import Time from "./Time";
 import Calendar from "./Calendar";
-import "./calendarPage.scss"
+import "./calendarPage.scss";
 
 const CalendarPage = () => {
 
@@ -12,6 +12,6 @@ const CalendarPage = () => {
             <Calendar/>
         </div>
     );
-}
+};
 
 export default CalendarPage;

@@ -10,11 +10,11 @@ const AuthContent = (props) => {
         <div className="auth-bar">
             {
                 user !== null
-                    ? (<AuthorizedContent user={user} handleLogout={props.handleLogout}/>)
+                    ? (<AuthorizedContent user={user} handleLogout={props.handleLogout} />)
                     : (<a className="header__link" href="#login" onClick={props.handleLogin}>Login</a>)
             }
         </div>
     );
-}
+};
 
 export default AuthContent;

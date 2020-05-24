@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from "./Header/Header";
@@ -12,33 +12,33 @@ import CalendarPage from "./Calendar/CalendarPage";
 import NotFound from "./NotFound/NotFound";
 
 const App = () => {
-  return (
-    <Router>
+    return (
+        <Router>
 
-      <Header/>
+            <Header />
 
-      <Switch>
+            <Switch>
 
-        <Route exact path="/" component={Home}/>
+                <Route exact path="/" component={Home} />
 
-        <Route path="/about" component={About}/>
+                <Route path="/about" component={About} />
 
-        <Route exact path="/works" component={Works}/>
+                <Route exact path="/works" component={Works} />
 
-        <Route path="/works/:id" component={Work}/>
+                <Route path="/works/:id" component={Work} />
 
-        <Route exact path="/contacts" component={Contacts}/>
+                <Route exact path="/contacts" component={Contacts} />
 
-        <Route path="/calendar" component={CalendarPage}/>
+                <Route path="/calendar" component={CalendarPage} />
 
-        <Route path="*" component={NotFound}/>
+                <Route path="*" component={NotFound} />
 
-      </Switch>
+            </Switch>
 
-      <Footer/>
+            <Footer />
 
-    </Router>
-  )
-}
+        </Router>
+    );
+};
 
 export default App;

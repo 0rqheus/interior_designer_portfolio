@@ -4,17 +4,17 @@ import WorksItem from "./WorksItem";
 
 const WorkList = (props) => {
 
-    if(props.data === null) return null;
+    if (props.data === null) return null;
 
-    const worksItems = props.data.map((el, index) =>
-            <WorksItem key={el.id} item={el} />
+    const worksItems = props.data.map(el =>
+        <WorksItem key={el.id} item={el} />
     );
 
     return (
         <ul className="works-list">
             {worksItems}
         </ul>
-    )
-}
+    );
+};
 
 export default WorkList;

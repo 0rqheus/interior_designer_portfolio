@@ -11,6 +11,6 @@ const AuthorizedContent = (props) => {
             <a className="header__link" href="#logout" onClick={props.handleLogout}>Logout</a>
         </>
     );
-}
+};
 
 export default AuthorizedContent;

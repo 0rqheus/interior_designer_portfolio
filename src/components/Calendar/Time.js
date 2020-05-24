@@ -1,12 +1,12 @@
 import React from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { toggleModal, setChosenDate } from "../../actions";
 
 import Modal from "../_partials/Modal/Modal";
-import AppointmentModalContent from "./AppointmentModalContent"
+import AppointmentModalContent from "./AppointmentModalContent";
 import Hours from "./Hours";
 
-import "./time.scss"
+import "./time.scss";
 
 const MODAL_ID = "appointmentModal";
 
@@ -21,7 +21,7 @@ class Time extends React.Component {
     }
 
     render() {
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
 
         return (
             <div className="time">
@@ -53,7 +53,7 @@ const mapStateToProps = (state) => {
         date: state.chosenDate,
         day: state.chosenDay
     };
-}
+};
 
 const mapDispatchToProps = { toggleModal, setChosenDate };
 

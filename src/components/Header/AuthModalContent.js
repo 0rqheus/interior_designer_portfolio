@@ -12,6 +12,6 @@ const AuthModalContent = (props) => {
 
         </div>
     );
-}
+};
 
 export default AuthModalContent;

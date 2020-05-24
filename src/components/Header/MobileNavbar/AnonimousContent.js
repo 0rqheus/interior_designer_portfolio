@@ -6,6 +6,6 @@ const AnonimousContent = (props) => {
             <a className="header__link" href="#login" onClick={props.handleLogin}>Login</a>
         </li>
     );
-}
+};
 
 export default AnonimousContent;

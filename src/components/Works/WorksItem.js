@@ -19,7 +19,7 @@ export default class WorksItem extends React.Component {
             .then((url) => {
                 this.setState({
                     imageURL: url
-                })
+                });
             })
             .catch(console.error);
     }

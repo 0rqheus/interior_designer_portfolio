@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { toggleModal } from "../../actions";
 import { storage, db } from "../../firebase";
 
@@ -12,7 +12,7 @@ import BuyModalContent from "./BuyModalContent";
 // import Loader from "../_partials/Loader/Loader";
 import BreadCrumbs from "../_partials/Breadcrumbs/Breadcrumbs";
 
-const MODAL_ID = "purchaseModal"
+const MODAL_ID = "purchaseModal";
 
 class Work extends React.Component {
 
@@ -23,28 +23,28 @@ class Work extends React.Component {
 
         this.state = {
             item: {},
-            imageURLs:[]
-        }
+            imageURLs: []
+        };
 
     }
 
     uploadData = (id) => {
         db.collection("works").doc(id)
-        .get()
-        .then(doc => {
-            if(doc.exists) {
-                this.setState({
-                    item: {id, ...doc.data()}
-                });
+            .get()
+            .then(doc => {
+                if (doc.exists) {
+                    this.setState({
+                        item: { id, ...doc.data() }
+                    });
 
-                this.uploadImages(doc.data().photos);
-            } else {
-                this.setState({
-                    item: null
-                });
-            }
-        })
-        .catch(console.error);
+                    this.uploadImages(doc.data().photos);
+                } else {
+                    this.setState({
+                        item: null
+                    });
+                }
+            })
+            .catch(console.error);
     }
 
     uploadImages = (photos) => {
@@ -55,11 +55,11 @@ class Work extends React.Component {
                 .then(url => {
                     this.setState({
                         imageURLs: [...this.state.imageURLs, url]
-                    })
+                    });
                 })
                 .catch(console.error);
 
-        })
+        });
     }
 
     handleClick = () => {
@@ -69,8 +69,8 @@ class Work extends React.Component {
 
     render() {
 
-        if(this.state.item === null) {
-            return <Redirect to="/404"/>
+        if (this.state.item === null) {
+            return <Redirect to="/404" />;
         }
 
         // if(this.state.item.id !== undefined || (this.state.imageURLs.length !== this.state.item.photos.length)) {
@@ -79,12 +79,12 @@ class Work extends React.Component {
 
         return (
             <>
-                <BreadCrumbs/>
+                <BreadCrumbs />
                 <div className="work">
-                
-                    <Modal modalId={MODAL_ID} content={() => <BuyModalContent workId={this.props.match.params.id}/>}/>
 
-                    <Slider containerClass={"work-slider"} photos={this.state.imageURLs}/>
+                    <Modal modalId={MODAL_ID} content={() => <BuyModalContent workId={this.props.match.params.id} />} />
+
+                    <Slider containerClass={"work-slider"} photos={this.state.imageURLs} />
 
                     <div className="work-info">
                         <h5 className="work-info__name">{this.state.item.title}</h5>

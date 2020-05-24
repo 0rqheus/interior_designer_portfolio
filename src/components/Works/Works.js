@@ -1,6 +1,6 @@
 import React from "react";
 import { db } from "../../firebase";
-import algoliasearch from 'algoliasearch';
+import algoliasearch from "algoliasearch";
 
 import "./works.scss";
 
@@ -15,7 +15,7 @@ export default class Works extends React.Component {
         super(props);
 
         const client = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, process.env.REACT_APP_ALGOLIA_SEARCH_KEY);
-        this.index = client.initIndex('works');
+        this.index = client.initIndex("works");
 
         this.uploadData();
 
@@ -63,7 +63,7 @@ export default class Works extends React.Component {
             return collection.startAfter(this.state.lastDoc).limit(pageSize);
 
         } else if (pageType === "prev") {
-            return collection.endBefore(this.state.firstDoc).limitToLast(pageSize)
+            return collection.endBefore(this.state.firstDoc).limitToLast(pageSize);
 
         } else {
             return collection.limit(pageSize);
@@ -86,7 +86,7 @@ export default class Works extends React.Component {
 
                 this.setPaginationQuery(params.pageType, pageSize, query).get()
                     .then(querySnapshot => {
-                        let data = [];
+                        const data = [];
 
                         querySnapshot.forEach((doc) => {
                             data.push({ id: doc.id, ...doc.data() });
@@ -142,12 +142,12 @@ export default class Works extends React.Component {
                     return {
                         ...item,
                         id: item.objectID
-                    }
+                    };
                 });
 
                 this.setState({
                     data: data
-                })
+                });
             })
             .catch(console.error);
     }
@@ -156,12 +156,12 @@ export default class Works extends React.Component {
         if (this.state.currentPage !== 1) {
             this.setState({
                 currentPage: this.state.currentPage - 1
-            })
+            });
 
             this.uploadData({
                 ...this.state,
                 pageType: "prev"
-            })
+            });
         }
     }
 
@@ -169,18 +169,18 @@ export default class Works extends React.Component {
         if (this.state.currentPage < this.state.pageAmount) {
             this.setState({
                 currentPage: this.state.currentPage + 1
-            })
+            });
 
             this.uploadData({
                 ...this.state,
                 pageType: "next"
-            })
+            });
         }
     }
 
     render() {
 
-        if (this.state.data === null) return <Loader width="95vw" height="95vh" />
+        if (this.state.data === null) return <Loader width="95vw" height="95vh" />;
 
         return (<div className="works">
             <WorksControlBar handleSort={this.handleSort} handleFilter={this.handleFilter} handleSearch={this.handleSearch} />

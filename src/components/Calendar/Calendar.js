@@ -1,6 +1,6 @@
 import React from "react";
 import { db } from "../../firebase";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { setChosenDate, setDayAppointments, setDayToNull } from "../../actions";
 
 import "./calendar.scss";
@@ -12,29 +12,29 @@ const Weekdays = () => {
         return (
             <th key={"weekday" + index} className="calendar__weekday">{el}</th>
         );
-    })
-}
+    });
+};
 
 const MonthName = (props) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     return (
         <th className="calendar__month" colSpan="5">{months[props.month]}</th>
-    )
-}
+    );
+};
 
 const Weeks = (props) => {
-    let weeks = [];
+    const weeks = [];
     for (let i = 0; i < 5; i++) {
         weeks.push(
             <tr key={"week" + i}>
                 {props.days.slice(i * 7, (i * 7) + 7)}
             </tr>
-        )
+        );
     }
 
     return weeks;
-}
+};
 
 class Calendar extends React.Component {
 
@@ -44,7 +44,7 @@ class Calendar extends React.Component {
         this.state = {
             date: new Date(),
             chosenDay: null
-        }
+        };
     }
 
     getDays = (date) => {
@@ -59,11 +59,11 @@ class Calendar extends React.Component {
             if ((date.getMonth() === currentDate.getMonth()) && (dayNum < currentDate.getDate())) return false;
 
             return true;
-        }
+        };
 
-        let days = [];
-        let daysBefore = [];
-        let daysAfter = [];
+        const days = [];
+        const daysBefore = [];
+        const daysAfter = [];
         for (let i = 0; i < daysAmount; i++) {
             days.push(
                 <td key={"day" + i} className={`calendar__day ${isDateRelevant(i) ? "" : " calendar__disabled-day"}`}>
@@ -74,13 +74,13 @@ class Calendar extends React.Component {
             if (i < firstDayWeekday) {
                 daysBefore.push(
                     <td key={"emptyBefore" + i} className="calendar__day calendar__disabled-day"></td>
-                )
+                );
             }
 
             if (i < cellsAmount - (firstDayWeekday + daysAmount)) {
                 daysAfter.push(
                     <td key={"emptyAfter" + i} className="calendar__day calendar__disabled-day"></td>
-                )
+                );
             }
         }
 
@@ -97,7 +97,7 @@ class Calendar extends React.Component {
 
         this.setState({
             chosenDay: newElement
-        })
+        });
     }
 
     handleClick = (event) => {
@@ -114,8 +114,13 @@ class Calendar extends React.Component {
                 .get()
                 .then(querySnapshot => {
 
-                    if(querySnapshot.docs.length !== 0) this.props.setDayAppointments(querySnapshot.docs[0].id, querySnapshot.docs[0].data().hours)
-                    else this.props.setDayToNull();
+                    if(querySnapshot.docs.length !== 0) {
+                        const firstResult = querySnapshot.docs[0];
+                        this.props.setDayAppointments(firstResult.id, firstResult.data().hours);
+                    }
+                    else {
+                        this.props.setDayToNull();
+                    }
 
                 })
                 .catch(console.error);
@@ -171,6 +176,6 @@ class Calendar extends React.Component {
 
 }
 
-const mapDispatchToProps = { setChosenDate, setDayAppointments, setDayToNull }
+const mapDispatchToProps = { setChosenDate, setDayAppointments, setDayToNull };
 
 export default connect(null, mapDispatchToProps)(Calendar);

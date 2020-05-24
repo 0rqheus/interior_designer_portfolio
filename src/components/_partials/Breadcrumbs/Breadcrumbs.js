@@ -6,7 +6,7 @@ import "./breadcrumbs.scss";
 const BreadCrumbs = () => {
     const location = useLocation();
 
-    const pathsList = location.pathname.split('/').map((item, index, arr) => {
+    const pathsList = location.pathname.split("/").map((item, index, arr) => {
 
         const link = arr.slice(0, index+1).join("/");
 
@@ -26,6 +26,6 @@ const BreadCrumbs = () => {
             </ul>
         </div>
     );
-}
+};
 
 export default BreadCrumbs;

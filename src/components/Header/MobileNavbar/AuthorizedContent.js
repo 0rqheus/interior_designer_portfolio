@@ -6,7 +6,7 @@ const AuthorizedContent = (props) => {
             <li className="mobile-nav-list__item">
                 <div className="mobile-user-info">
                     <span className="mobile-user-info__name">{props.user.displayName}</span>
-                    <img className="mobile-user-info__img" src={props.user.photoURL} alt="user avatar"/>
+                    <img className="mobile-user-info__img" src={props.user.photoURL} alt="user avatar" />
                 </div>
             </li>
             <li className="mobile-nav-list__item">
@@ -14,6 +14,6 @@ const AuthorizedContent = (props) => {
             </li>
         </>
     );
-}
+};
 
 export default AuthorizedContent;

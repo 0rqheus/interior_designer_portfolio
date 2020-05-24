@@ -8,18 +8,18 @@ export default class BuyModalContent extends React.Component {
 
         this.state = {
             ordered: false
-        }
+        };
     }
 
     handleOrder = () => {
         db.collection("orders").add({
-            contacts: this.refs.contacts.value,
+            contacts: this.contacts.contacts.value,
             workId: this.props.workId
         });
 
         this.setState({
             ordered: true
-        })
+        });
     }
 
     render() {
@@ -28,15 +28,14 @@ export default class BuyModalContent extends React.Component {
             return (
                 <div className="modal-content">
                     <h4 className="modal-content__header">
-                        Thanks for order! Now just wait and we'll contact you :)
+                        Thanks for order! Now just wait and we&aposll contact you :)
                     </h4>
                 </div>
-            )
+            );
         }
 
-        const contacts = auth.currentUser !== null
-                            ? auth.currentUser.email
-                            : "";
+        const currentUser = auth.currentUser;
+        const contacts = (currentUser !== null) ? currentUser.email : "";
 
         return (
             <div className="modal-content">
@@ -45,7 +44,7 @@ export default class BuyModalContent extends React.Component {
                 <form className="modal-form">
                     <div className="modal-form-container">
                         <label>Your contacts:</label>
-                        <input className="modal-form__input" ref="contacts" placeholder="Email, phone, etc." defaultValue={contacts}/>
+                        <input className="modal-form__input" ref={c => this.contacts = c} placeholder="Email, phone, etc." defaultValue={contacts}/>
                     </div>
 
                     <button className="modal-form__submit-btn" onClick={this.handleOrder}>Send</button>

@@ -8,11 +8,11 @@ const AuthContent = (props) => {
         <>
             {
                 props.user !== null
-                    ? <AuthorizedContent user={props.user} handleLogout={props.handleLogout}/>
+                    ? <AuthorizedContent user={props.user} handleLogout={props.handleLogout} />
                     : <AnonimousContent handleLogin={props.handleLogin} />
             }
         </>
-    )
-}
+    );
+};
 
 export default AuthContent;

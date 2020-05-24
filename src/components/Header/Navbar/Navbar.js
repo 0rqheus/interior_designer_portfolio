@@ -9,23 +9,23 @@ import "./navbar.scss";
 
 const Navbar = (props) => {
 
-  return (
-    <div className="navbar">
-      <nav className="nav">
-        <NavList />
-        <Dropdown
-          target={() => <button className="header-btn"></button>}
-          content={DropdownContent}
-        />
-      </nav>
+    return (
+        <div className="navbar">
+            <nav className="nav">
+                <NavList />
+                <Dropdown
+                    target={() => <button className="header-btn"></button>}
+                    content={DropdownContent}
+                />
+            </nav>
 
-      <AuthContent
-        user={props.user}
-        handleLogin={props.handleLogin}
-        handleLogout={props.handleLogout}
-      />
-    </div>
-  );
-}
+            <AuthContent
+                user={props.user}
+                handleLogin={props.handleLogin}
+                handleLogout={props.handleLogout}
+            />
+        </div>
+    );
+};
 
 export default Navbar;
