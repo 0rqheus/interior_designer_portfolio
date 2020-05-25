@@ -12,12 +12,21 @@ const MODAL_ID = "appointmentModal";
 
 class Time extends React.Component {
 
-    handleClick = (i) => {
+    handleClick = (event) => {
 
-        const chosenDate = new Date(this.props.date.getFullYear(), this.props.date.getMonth(), this.props.date.getDate(), i);
+        const target = event.target;
 
-        this.props.setChosenDate(chosenDate);
-        this.props.toggleModal(MODAL_ID);
+        if(!target.classList.contains("time__item_booked")) {
+            const date = this.props.date;
+            const hour = target.dataset.hour;
+
+            console.log(hour);
+
+            const chosenDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), +hour);
+            this.props.setChosenDate(chosenDate);
+            this.props.toggleModal(MODAL_ID);
+        }
+        
     }
 
     render() {
@@ -26,18 +35,19 @@ class Time extends React.Component {
         return (
             <div className="time">
 
-                <Modal modalId={MODAL_ID} content={() => <AppointmentModalContent modalId={MODAL_ID}/>} />
+                <Modal modalId={MODAL_ID} content={AppointmentModalContent} />
 
                 <h4 className="time__title">Time</h4>
 
                 {
                     this.props.date !== null &&
+                    
                     <div>
-                        <p>
+                        <p className="time__date">
                             {this.props.date.toLocaleDateString("en-GB", options)}
                         </p>
-                        <ul className="time__list">
-                            <Hours day={this.props.day} date={this.props.date} onClick={this.handleClick} />
+                        <ul className="time__list" onClick={this.handleClick} >
+                            <Hours day={this.props.day} date={this.props.date}/>
                         </ul>
                     </div>
                 }

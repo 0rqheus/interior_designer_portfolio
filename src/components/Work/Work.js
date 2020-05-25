@@ -9,8 +9,8 @@ import "./work.scss";
 import Modal from "../_partials/Modal/Modal";
 import Slider from "../_partials/Slider/Slider";
 import BuyModalContent from "./BuyModalContent";
-// import Loader from "../_partials/Loader/Loader";
 import BreadCrumbs from "../_partials/Breadcrumbs/Breadcrumbs";
+// import Loader from "../_partials/Loader/Loader";
 
 const MODAL_ID = "purchaseModal";
 
@@ -84,19 +84,17 @@ class Work extends React.Component {
 
                     <Modal modalId={MODAL_ID} content={() => <BuyModalContent workId={this.props.match.params.id} />} />
 
-                    <Slider containerClass={"work-slider"} photos={this.state.imageURLs} />
+                    <Slider containerClass={"work__slider"} photos={this.state.imageURLs} />
 
-                    <div className="work-info">
-                        <h5 className="work-info__name">{this.state.item.title}</h5>
+                    <h5 className="work__name">{this.state.item.title}</h5>
 
-                        <div className="work-info__pricebar">
-                            <span className="work-info__pricebar-price">${this.state.item.price}</span>
+                    <div className="pricebar">
+                        <span className="pricebar__price">${this.state.item.price}</span>
 
-                            <button className="work-info__pricebar-buy-btn" onClick={this.handleClick}>Buy</button>
-                        </div>
-
-                        <p className="work-info__description">{this.state.item.description}</p>
+                        <button className="pricebar__buy-btn" onClick={this.handleClick}>Buy</button>
                     </div>
+
+                    <p className="work__description">{this.state.item.description}</p>
 
                 </div>
             </>

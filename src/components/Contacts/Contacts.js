@@ -26,7 +26,7 @@ const Contacts = () => {
             <div className="contacts__text">
                 <p>Your can always reach me on <b>{emailAddress}</b></p>
 
-                <p>I&aposm also on a few social networks, so check me out on:</p>
+                <p>{"I'm also on a few social networks, so check me out on:"}</p>
 
                 <ul className="contacts__social-networks-list">
                     {socialLinks}

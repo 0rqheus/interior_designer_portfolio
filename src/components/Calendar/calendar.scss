@@ -14,12 +14,15 @@ $booked-hour-background-color: rgb(233, 96, 96);
 $site-header-height: 6;
 $calendar-head-height: 20;
 $calendar-body-height: 80;
+$column-width: 84;
 
 $border-size: 1px;
 
 .calendar{
 
     border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
 
     &__header {
         height: (round($calendar-head-height - $site-header-height)/2 - 2) * 1vh;
@@ -28,13 +31,15 @@ $border-size: 1px;
     }
 
     &__weekday{
-        height: (round($calendar-head-height - $site-header-height)/2 - 2) * 1vh;
+        height: (round($calendar-head-height - $site-header-height)/2 - 2.5) * 1vh;
         background: $weekday-background-color;
         border: $border-size solid $border-color;
+        overflow: hidden;
+        white-space: normal;
     }
 
     &__day {
-        width: 12vw;
+        width: $column-width / 7 * 1vh;
         height: $calendar-body-height / 5 * 1vh;
         text-align: center;
         border: $border-size solid $border-color;
@@ -61,4 +66,21 @@ $border-size: 1px;
         cursor: pointer;
     }
 
+}
+
+@media screen and (max-width: 800px) {
+    .calendar{
+    
+        &__day {
+            width: 100 / 7 * 1vh;
+            // height: $calendar-body-height / 5 * 1vh;
+        }
+
+        &__weekday{
+            width: 20px;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+    
+    }
 }

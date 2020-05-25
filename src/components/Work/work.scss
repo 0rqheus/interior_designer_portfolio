@@ -8,60 +8,84 @@ $description-font-size: 20px;
 $main-indent: 2%;
 $info-content-margin: 10px;
 
-.work {
+.work{
     min-height: 93vh;
-}
-
-.work-slider {
-    width: 50vw;
-    height: 50vh;
-    padding: $main-indent;
-    margin-right: $main-indent;
-    float: left;
-    // background-color: lighten($main-color, 40%);
-}
-
-.work-info{
     padding: $main-indent;
 
     &__name {
         text-align: center;
         font-size: $header-font-size;
         margin: $info-content-margin;
-    }
-
-    &__pricebar {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin: $info-content-margin * 3;
-
-        &-price {
-            color: $main-color;
-            font-weight: bold;
-            font-size: $price-font-size;
-            padding-top: 5px;
-        }
-
-        &-buy-btn {
-            background-color: transparent;
-            border: 2px solid $secondary-color;
-            margin-left: $info-content-margin * 3;
-            width: 100px;
-            height: 40px;
-            font-weight: bold;
-
-            &:hover {
-                background-color: $main-color;
-                border: none;
-                color: white;
-            }
-        }
-
+        padding: $main-indent;
     }
 
     &__description {
+        padding: $main-indent;
         line-height: 200%;
         font-size: $description-font-size;
     }
+
+    &__slider {
+        width: 50vw;
+        height: 50vh;
+        margin-right: $main-indent;
+        float: left;
+    }
+}
+
+.pricebar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: $info-content-margin * 3;
+
+    &__price {
+        color: $main-color;
+        font-weight: bold;
+        font-size: $price-font-size;
+        padding-top: 5px;
+    }
+
+    &__buy-btn {
+        background-color: transparent;
+        border: 2px solid $secondary-color;
+        margin-left: $info-content-margin * 3;
+        width: 100px;
+        height: 40px;
+        font-weight: bold;
+
+        &:hover {
+            background-color: $main-color;
+            border: none;
+            color: white;
+        }
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+
+    .work{
+        display: grid;
+        grid-template-rows: 4;
+    
+        &__name {
+            grid-row: 1;
+        }
+    
+        &__description {
+            grid-row: 4;
+        }
+
+        &__slider {
+            width: 95vw;
+            grid-row: 2;
+            float: none;
+        }
+    }
+
+    .pricebar {
+        grid-row: 3;
+    }
+
 }

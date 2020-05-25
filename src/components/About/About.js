@@ -18,10 +18,10 @@ const About = () => {
                 <section>
                     <h4 className="about__header">Hello!</h4>
                     <p className="about__description">
-                        My name is Orqheus and I&quotm {(new Date()).getFullYear() - bornYear} now. I&quotm professional interior designer with 10 years experience.
+                        {`My name is Orqheus and I'm ${(new Date()).getFullYear() - bornYear} now. I'm professional interior designer with 10 years experience.`}
                     </p>
                     <p className="about__description">
-                        Nowadays i&quotm living in Kiew, Ukraine, also i got an education here in the National Design University. Moreover i passed NCIDQ exam in 2012 and got Council for Interior Design Qualification (CIDQ) certification.
+                        {"Nowadays i'm living in Kiew, Ukraine, also i got an education here in the National Design University. Moreover i passed NCIDQ exam in 2012 and got Council for Interior Design Qualification (CIDQ) certification."}
                     </p>
                     <p className="about__description">
                         My favourite styles are minimalism and futurism.
@@ -31,11 +31,11 @@ const About = () => {
                 <section>
                     <h4 className="about__header">Skills</h4>
                     <p className="about__description">
-                        I&quotm very curious person and always trying to explore somethign new.
-                        I like to investigate current trends to get max of them and create somethign unique.
+                        {`I'm very curious person and always trying to explore somethign new.
+                        I like to investigate current trends to get max of them and create somethign unique.`}
                     </p>
                     <p className="about__description">
-                        And of course I can work with such programs like &quotAdobe Photoshop&quot, &quotSketchUp Pro&quot, &quotAutodesk AutoCAD LT&quot and &quotBlender 3D&quot on advanced level.
+                        {"And of course I can work with such programs like 'Adobe Photoshop', 'SketchUp Pro', 'Autodesk AutoCAD LT' and 'Blender 3D' on advanced level."}
                     </p>
                     <p className="about__description">
                         I`ve worked in a lot of companies with very different people and can interract with anyone.
@@ -57,7 +57,7 @@ const About = () => {
                         </li>
                         <li>
                             <p className="about__description">
-                                March 2018 - &quotBest ecology house&quot award
+                                {"March 2018 - 'Best ecology house' award"}
                             </p>
                         </li>
                     </ul>

@@ -30,7 +30,7 @@ const Hours = (props) => {
             <li
                 key={`${props.date.getMonth()}-${props.date.getDate()}-${i}`}
                 className={isHourBooked(i)}
-                onClick={() => props.onClick(i)}
+                data-hour={i}
             >
                 {`${i}:00 - ${i + 1}:00`}
             </li>
