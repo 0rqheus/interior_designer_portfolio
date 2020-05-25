@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./worksControlBar.scss";
+
 const WorksControlBar = (props) => {
 
     return (

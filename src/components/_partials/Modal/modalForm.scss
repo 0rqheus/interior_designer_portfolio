@@ -1,0 +1,56 @@
+$border-color: black;
+
+$font-size: 16px;
+$border-size: 2px;
+$top-bottom-margin: 10px;
+$form-element-width: 90%;
+$padding: 5px;
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: $padding * 2;
+
+    &__container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: $top-bottom-margin;
+        margin-bottom: $top-bottom-margin;
+    }
+
+    &__input {
+        width: $form-element-width;
+        height: 30px;
+        padding: $padding;
+        font-size: $font-size;
+        border: $border-size solid $border-color;
+    }
+
+    &__textarea {
+        width: $form-element-width;
+        padding: $padding;
+        font-size: $font-size;
+        border: $border-size solid $border-color;
+    }
+
+    &__submit-btn {
+        width: 120px;
+        height: 40px;
+        margin-top: $top-bottom-margin * 3;
+        border: $border-size solid $border-color;
+        background-color: transparent;
+
+        &:hover {
+            background-color: $border-color;
+            color: white;
+        }
+    }
+
+    &_invalid {
+        border-color: rgb(255, 68, 68);
+    }
+}

@@ -1,3 +1,5 @@
+$photo-max-size: 300px;
+
 .works-item {
     display: flex;
     flex-direction: column;
@@ -6,8 +8,8 @@
     padding: 10px;
 
     &__photo {
-        max-width: 300px;
-        max-height: 300px;
+        max-width: $photo-max-size;
+        max-height: $photo-max-size;
 
         &_fade {
             filter: blur(3px);
@@ -16,12 +18,16 @@
 
     &__name {
         width: 220px;
+        display: none;
+        position: absolute;
+
         text-align: center;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        position: absolute;
-        display: none;
+
+        color: white;
+        text-shadow: 1px 1px 2px black;
 
         &_show {
             display: inline;

@@ -5,7 +5,7 @@ import algoliasearch from "algoliasearch";
 import "./works.scss";
 
 import PaginationMenu from "./PaginationMenu";
-import WorksList from "./WorkList";
+import WorksList from "./WorksList";
 import WorksControlBar from "./WorksControlBar";
 import Loader from "../_partials/Loader/Loader";
 

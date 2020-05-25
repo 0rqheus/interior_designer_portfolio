@@ -1,18 +1,15 @@
-$main-color: dodgerblue;
-$border-color: black;
-
 .header {
     min-height: 6vh;
     display: flex;
     align-items: center;
-    background-color: $main-color;
+    background-color: dodgerblue;
     position: sticky;
     top: 0px;
     z-index: 3;
 
     &__link {
         text-decoration: none;
-        color: $border-color;
+        color: black;
     }
     
     &-btn {

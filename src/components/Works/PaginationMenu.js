@@ -1,6 +1,8 @@
 import React from "react";
 import arrowIcon from "../../assets/images/arrow.svg";
 
+import "./paginationMenu.scss";
+
 const PaginationMenu = (props) => {
     return (
         <div className="pagination-menu">

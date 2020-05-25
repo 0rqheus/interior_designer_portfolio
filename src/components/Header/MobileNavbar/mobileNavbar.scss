@@ -24,42 +24,6 @@ $font-size: 18px;
     justify-content: space-around;
 }
 
-.mobile-nav-list {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-
-    margin: 0px;
-    padding: 0px;
-
-    box-shadow: 1px 5px 5px darken($secondary-color, 20%);
-
-    list-style-type: none;
-    background-color: $secondary-color;
-
-    &_hidden {
-        display: none;
-    }
-
-    &__item {
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-    
-    &__link {
-        text-decoration: none;
-        color: $border-color;
-    }
-
-    &__auth {
-        border-top: $border-size solid $border-color;
-        text-align: center;
-    }
-}
-
 .mobile-user-info {
 
     display: flex;

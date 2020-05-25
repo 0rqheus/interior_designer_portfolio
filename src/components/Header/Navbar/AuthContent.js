@@ -1,6 +1,7 @@
 import React from "react";
 
 import AuthorizedContent from "./AuthorizedContent";
+import "./authContent.scss";
 
 const AuthContent = (props) => {
 

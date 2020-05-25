@@ -1,0 +1,18 @@
+$socials-list: 30px;
+
+.socials-list {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0px;
+
+    &__link {
+        text-decoration: none;
+    }
+    
+    &__link-icon {
+        width: $socials-list;
+        height: $socials-list;
+    }
+}

@@ -1,13 +1,16 @@
+$border-width: 5px;
+$square-size: 1em;
+
 .loader{
     display: flex;
     justify-content: center;
     align-items: center;
 
     &-square {
-        width: 1em;
-        height: 1em;
+        width: $square-size;
+        height: $square-size;
         position: absolute;
-        border: 5px solid black;
+        border: $border-width solid black;
         font-size: 1000%;
         animation-duration: 2s;
         animation-iteration-count: infinite;
@@ -34,15 +37,15 @@
 @keyframes front-loader {
     0% {
         transform: scaleX(1);
-        border-width: 5px;
+        border-width: $border-width;
     }
     50% {
         transform: scaleX(0.01);
-        border-width: 5px 30px;
+        border-width: $border-width $border-width * 7;
     }
     100% {
         transform: scaleX(1);
-        border-width: 5px;
+        border-width: $border-width;
     }  
 }
   

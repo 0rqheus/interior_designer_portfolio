@@ -1,0 +1,30 @@
+$menu-margin: 5vh;
+$arrow-size: 50px;
+
+.pagination-menu {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: $menu-margin;
+    margin-bottom: $menu-margin;
+
+    &__arrow {
+        width: $arrow-size;
+        height: $arrow-size;
+        padding: 0px;
+        border: 2px solid black;
+        cursor: pointer;
+
+        &_left {
+            transform: scaleX(-1);
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .pagination-menu {
+        width: 60vw;
+    }
+}

@@ -1,0 +1,40 @@
+$secondary-color: white;
+$border-color: black;
+
+$top-bottom-padding: 15px;
+
+.mobile-nav-list {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    margin: 0px;
+    padding: 0px;
+
+    box-shadow: 1px 5px 5px darken($secondary-color, 20%);
+
+    list-style-type: none;
+    background-color: $secondary-color;
+
+    &_hidden {
+        display: none;
+    }
+
+    &__item {
+        padding-top: $top-bottom-padding;
+        padding-bottom: $top-bottom-padding;
+    }
+    
+    &__link {
+        text-decoration: none;
+        color: $border-color;
+    }
+
+    &__auth {
+        border-top: 2px solid $border-color;
+        text-align: center;
+    }
+}

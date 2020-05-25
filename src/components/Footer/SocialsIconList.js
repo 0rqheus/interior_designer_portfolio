@@ -1,6 +1,7 @@
 import React from "react";
 
 import SocialsIconItem from "./SocialsIconItem";
+import "./socialsList.scss";
 
 const SocialsIconList = (props) => {
 
@@ -10,7 +11,7 @@ const SocialsIconList = (props) => {
 
     return (
         <>
-            <ul className="footer__contacts-socials-list">
+            <ul className="socials-list">
                 {linkIcons}
             </ul>
         </>

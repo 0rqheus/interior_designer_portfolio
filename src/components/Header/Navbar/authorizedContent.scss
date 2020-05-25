@@ -1,0 +1,19 @@
+$img-size: 4vh;
+
+.user-info {
+    display: flex;
+    align-items: center;
+
+    &__name {
+        color: white;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    &__img {
+        width: $img-size;
+        height: $img-size;
+        border-radius: 50%;
+        margin-right: 30px;
+    }
+}

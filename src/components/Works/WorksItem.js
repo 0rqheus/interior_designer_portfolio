@@ -64,19 +64,21 @@ export default class WorksItem extends React.Component {
         return (
             <div className="works-item">
 
-                {this.state.imageURL !== null 
-                    ? <Link to={`works/${this.props.item.id}`}>
-                        <img className={this.getImageClasses(this.state.showText)}
-                            src={this.state.imageURL}
-                            alt={this.props.item.title}
-                            onMouseOver={this.mouseOverHandler}
-                            onMouseOut={this.mouseOutHandler}
-                            onClick={this.clickHandler}
-                        />
-                    </Link>
-                    : <Loader width="300px" height="300px"/>
+                {this.state.imageURL !== null
+                    ? (
+                        <Link to={`works/${this.props.item.id}`}>
+                            <img className={this.getImageClasses(this.state.showText)}
+                                src={this.state.imageURL}
+                                alt={this.props.item.title}
+                                onMouseOver={this.mouseOverHandler}
+                                onMouseOut={this.mouseOutHandler}
+                                onClick={this.clickHandler}
+                            />
+                        </Link>
+                    )
+                    : <Loader width="300px" height="300px" />
                 }
-                
+
 
                 <p className={this.getTextClasses(this.state.showText)}>{this.props.item.title}</p>
             </div>

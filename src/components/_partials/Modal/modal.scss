@@ -1,27 +1,11 @@
-$modal-width: 45vw;
-$modal-min-height: 15vh;
-
-$modal-background: rgba(0, 0, 0, 0.3);
-$modal-container-background: white;
-$main-color: dodgerblue;
-$border-color: black;
-$warning-color: rgb(255, 94, 94);
-
-$header-font-size: 22px;
-$main-font-size: 18px;
-$border-size: 2px;
-$warning-font-size: 14px;
-
-$modal-top-margin: 30vh;
-$content-width: 40;
-$form-element-width: 90%;
+$size: 100%;
 
 .modal {
     position: fixed;
-    top:0px;
-    background: $modal-background;
-    height: 100%;
-    width: 100%;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.3);
+    height: $size;
+    width: $size;
     z-index: 1;
 
     &_hidden {
@@ -29,115 +13,29 @@ $form-element-width: 90%;
     }
 
     &__container {
-        width: $modal-width;
-        min-height: $modal-min-height;
+        width: 45vw;
+        min-height: 15vh;
         position: relative;
         margin: auto;
-        margin-top: $modal-top-margin;
+        margin-top: 30vh;
         // overflow-y: scroll;
-        border: $border-size solid $border-color;
-        background: $modal-container-background;
+        border: 2px solid black;
+        background: white;
         opacity: 1;
     }
 
-    &__close-btn{
+    &__close-btn {
         position: absolute;
-        top:0px;
-        right:0px;
+        top: 0px;
+        right: 0px;
         font-size: 30px;
         font-weight: bold;
         cursor: pointer;
     }
 }
 
-.modal-content {
-    width: $content-width;
-    margin: auto;
-    padding: 10px;
-    font-size: $main-font-size;
-    
-    &__header {
-        text-align: center;
-        font-size: $header-font-size;
-        color: $main-color;
-    }
-
-    &__warning {
-        margin-top: 20px;
-        color: $warning-color;
-        font-size: $warning-font-size;
-    }
-
-    &__btn {
-        height: 50px;
-        margin: auto;
-        border: $border-size solid $main-color;
-        background-color: transparent;
-
-        &:hover {
-            background-color: $main-color;
-        }
-
-        &_large {
-            width: 100%;
-        }
-    }
-}
-
-.modal-form {
-
-    // height: 32vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-
-    &__container {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    &__input {
-        width: $form-element-width;
-        height: 30px;
-        padding: 5px;
-        font-size: 16px;
-        border: $border-size solid $border-color;
-    }
-
-    &__textarea {
-        width: $form-element-width;
-        padding: 5px;
-        font-size: 16px;
-        border: $border-size solid $border-color;
-    }
-
-    &__submit-btn {
-        width: 120px;
-        height: 40px;
-        margin-top: 30px;
-        border: $border-size solid $border-color;
-        background-color: transparent;
-
-        &:hover {
-            background-color: $border-color;
-            color: white;
-        }
-    }
-
-    &_invalid {
-        border-color: rgb(255, 68, 68);
-    }
-}
-
 @media screen and (max-width: 800px) {
     .modal {
-    
         &__container {
             width: 85vw;
             margin-top: 20vh;

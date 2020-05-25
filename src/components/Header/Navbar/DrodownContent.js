@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "./dropdownContent.scss";
+
 const DropdownContent = () => {
     return (
         <ul className="dropdown-content-list">

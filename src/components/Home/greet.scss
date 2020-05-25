@@ -1,10 +1,8 @@
-$secondary-color: white;
-
 .greet {
     display: flex;
     background-image: url("../../assets/images/home-greet-back.jpg");
     background-position: center;
-    color: $secondary-color;
+    color: white;
 
     &__content {
         text-align: center;

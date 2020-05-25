@@ -1,0 +1,68 @@
+$border-color: black;
+$background: white;
+
+$control-bar-width: 70;
+$search-width: 50;
+$border-size: 2px;
+$padding: 5px;
+
+.works-control-bar {
+    width: $control-bar-width * 1vw;
+    display: flex;
+    justify-content: space-between;
+    padding: $padding;
+
+    &__select {
+        padding: $padding;
+        background-color: $background;
+        border: $border-size solid $border-color;
+        appearance: none;
+    }
+
+    &__search-input {
+        padding: $padding;
+        width: $search-width * 1vw;
+        border: $border-size solid $border-color;
+    }
+
+    &__selects-container {
+        display: flex;
+        justify-content: space-around;
+        width: 18vw;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .works-control-bar {
+        width: ($control-bar-width + 10) * 1vw;
+
+        &__selects-container {
+            width: 30vw;
+        }
+
+        &__search-input {
+            width: ($search-width - 5) * 1vw;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .works-control-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        width: ($control-bar-width + 27) * 1vw;
+
+        &__selects-container {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        &__search-input {
+            width: (($search-width - 9) * 2) * 1vw;
+        }
+    }
+}

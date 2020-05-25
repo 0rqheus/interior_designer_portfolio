@@ -1,11 +1,10 @@
 $main-color: dodgerblue;
 $secondary-color: white;
 $main-font-size: 18px;
-$bg-color: black;
 
 .footer {
     color: $secondary-color;
-    background: $bg-color;
+    background: black;
 
     &__content {
         padding: 15px;
@@ -26,23 +25,6 @@ $bg-color: black;
             font-size: $main-font-size;
             margin: 0px;
         }
-
-        &-socials-list {
-            display: flex;
-            width: 300px;
-            justify-content: space-between;
-            list-style-type: none;
-            padding: 0px;
-        }
-    }
-
-    &__link {
-        text-decoration: none;
-    }
-
-    &__link-icon {
-        width: 30px;
-        height: 30px;
     }
 
     &__rights {

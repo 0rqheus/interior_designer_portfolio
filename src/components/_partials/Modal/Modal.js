@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { toggleModal } from "../../../actions";
 
 import "./modal.scss";
+import "./modalContent.scss";
+import "./modalForm.scss";
 
 class Modal extends React.Component {
 

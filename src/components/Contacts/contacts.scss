@@ -1,25 +1,22 @@
-$main-color: dodgerblue;
-$main-font-size: 20px;
-
 .contacts {
-    padding: 3%;
-    padding-top: 2vh;
     min-height: 93vh;
     display: flex;
     justify-content: space-around;
+    padding: 3%;
+    padding-top: 2vh;
 
     &__text {
-        font-size: $main-font-size;
+        font-size: 20px;
     }
 
-    &__social-networks-list {
+    &__socials-list {
         list-style-type: none;
         margin-bottom: 5vh;
     }
 
     &__link {
         text-decoration: none;
-        color: $main-color;
+        color: dodgerblue;
     }
 }
 
@@ -34,7 +31,6 @@ $main-font-size: 20px;
 @media screen and (max-width: 900px) {
     .contacts {
         flex-direction: column;
-        // padding: 5%;
     }
 
     .location {

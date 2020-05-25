@@ -1,0 +1,23 @@
+$cell-size: 1fr;
+
+.works-list {
+    display: grid;
+    grid-template-columns: repeat(3, $cell-size);
+    grid-template-rows: repeat(2, 35vh);
+    grid-gap: 10px;
+    padding: 0px;
+}
+
+@media screen and (max-width: 1100px) {
+    .works-list {
+        grid-template-columns: repeat(2, $cell-size);
+        grid-template-rows: repeat(3);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .works-list {
+        grid-template-columns: repeat(1, $cell-size);
+        grid-template-rows: minmax(0px, $cell-size);
+    }
+}

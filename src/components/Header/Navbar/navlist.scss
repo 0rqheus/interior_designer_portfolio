@@ -1,0 +1,19 @@
+$side-padding: 25px;
+$top-down-padding: 5px;
+
+.nav-list {
+    padding-right: $side-padding - 5px;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+  
+    &__item {
+        padding: $top-down-padding $side-padding $top-down-padding $side-padding;
+        border-right: 2px solid black;
+    }
+    
+    &__item:last-child {
+        border-right: none;
+    }
+    
+}

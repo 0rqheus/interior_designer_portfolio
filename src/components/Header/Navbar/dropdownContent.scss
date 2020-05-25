@@ -1,0 +1,9 @@
+.dropdown-content-list {
+    min-width: 100px;
+    list-style-type: none;
+    padding: 0px;
+
+    &__item {
+        padding: 5px;
+    }
+}

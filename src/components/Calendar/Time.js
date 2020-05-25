@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { toggleModal, setChosenDate } from "../../actions";
 import { APPOINTMENT_MODAL } from "../../modalNames";
 
-import Modal from "../_partials/Modal/Modal";
-import AppointmentModalContent from "./AppointmentModalContent";
 import Hours from "./Hours";
 
 import "./time.scss";
@@ -34,8 +32,6 @@ class Time extends React.Component {
 
         return (
             <div className="time">
-
-                <Modal modalId={APPOINTMENT_MODAL} content={AppointmentModalContent} />
 
                 <h4 className="time__title">Time</h4>
 

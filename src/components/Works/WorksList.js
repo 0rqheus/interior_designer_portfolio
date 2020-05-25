@@ -2,7 +2,9 @@ import React from "react";
 
 import WorksItem from "./WorksItem";
 
-const WorkList = (props) => {
+import "./worksList.scss";
+
+const WorksList = (props) => {
 
     if (props.data === null) return null;
 
@@ -17,4 +19,4 @@ const WorkList = (props) => {
     );
 };
 
-export default WorkList;
+export default WorksList;

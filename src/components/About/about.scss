@@ -16,13 +16,13 @@ $main-font-size: 18px;
     }
 
     &__info{
-        padding: 35px;   
+        padding: 35px;
     }
 
     &__header {
         margin-top: 40px;
         margin-bottom: 5px;
-        font-size: 24px;
+        font-size: $main-font-size + 6px;
         color: $main-color;
     }
 
