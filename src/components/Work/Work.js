@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { toggleModal } from "../../actions";
 import { storage, db } from "../../firebase";
+import { PURCHASE_MODAL } from "../../modalNames";
 
 import "./work.scss";
 
@@ -11,8 +12,6 @@ import Slider from "../_partials/Slider/Slider";
 import BuyModalContent from "./BuyModalContent";
 import BreadCrumbs from "../_partials/Breadcrumbs/Breadcrumbs";
 // import Loader from "../_partials/Loader/Loader";
-
-const MODAL_ID = "purchaseModal";
 
 class Work extends React.Component {
 
@@ -63,7 +62,7 @@ class Work extends React.Component {
     }
 
     handleClick = () => {
-        this.props.toggleModal(MODAL_ID);
+        this.props.toggleModal(PURCHASE_MODAL);
     }
 
 
@@ -82,7 +81,7 @@ class Work extends React.Component {
                 <BreadCrumbs />
                 <div className="work">
 
-                    <Modal modalId={MODAL_ID} content={() => <BuyModalContent workId={this.props.match.params.id} />} />
+                    <Modal modalId={PURCHASE_MODAL} content={() => <BuyModalContent workId={this.props.match.params.id} />} />
 
                     <Slider containerClass={"work__slider"} photos={this.state.imageURLs} />
 

@@ -1,14 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { toggleModal, setChosenDate } from "../../actions";
+import { APPOINTMENT_MODAL } from "../../modalNames";
 
 import Modal from "../_partials/Modal/Modal";
 import AppointmentModalContent from "./AppointmentModalContent";
 import Hours from "./Hours";
 
 import "./time.scss";
-
-const MODAL_ID = "appointmentModal";
 
 class Time extends React.Component {
 
@@ -20,11 +19,12 @@ class Time extends React.Component {
             const date = this.props.date;
             const hour = target.dataset.hour;
 
-            console.log(hour);
-
             const chosenDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), +hour);
+
+            console.log(hour, date, chosenDate);
+
             this.props.setChosenDate(chosenDate);
-            this.props.toggleModal(MODAL_ID);
+            this.props.toggleModal(APPOINTMENT_MODAL);
         }
         
     }
@@ -35,7 +35,7 @@ class Time extends React.Component {
         return (
             <div className="time">
 
-                <Modal modalId={MODAL_ID} content={AppointmentModalContent} />
+                <Modal modalId={APPOINTMENT_MODAL} content={AppointmentModalContent} />
 
                 <h4 className="time__title">Time</h4>
 

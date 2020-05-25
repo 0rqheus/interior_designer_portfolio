@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 const Hours = (props) => {
 
     const startHour = 13;

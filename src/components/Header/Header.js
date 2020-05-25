@@ -2,6 +2,7 @@ import React from "react";
 import { auth, googleProvider } from "../../firebase";
 import { connect } from "react-redux";
 import { toggleModal } from "../../actions";
+import { LOGIN_MODAL } from "../../modalNames";
 
 import Navbar from "./Navbar/Navbar";
 import MobileNavbar from "./MobileNavbar/MobileNavbar";
@@ -9,8 +10,6 @@ import Modal from "../_partials/Modal/Modal";
 import AuthModalContent from "./AuthModalContent";
 
 import "./header.scss";
-
-const MODAL_ID = "loginModal";
 
 class Header extends React.Component {
 
@@ -27,7 +26,7 @@ class Header extends React.Component {
         auth.signInWithPopup(googleProvider)
             .then(result => {
 
-                this.props.toggleModal(MODAL_ID);
+                this.props.toggleModal(LOGIN_MODAL);
 
                 this.setState({
                     user: result.user
@@ -47,14 +46,14 @@ class Header extends React.Component {
     }
 
     handleLogin = () => {
-        this.props.toggleModal(MODAL_ID);
+        this.props.toggleModal(LOGIN_MODAL);
     }
 
     render() {
         return (
             <header className="header">
                 <Modal
-                    modalId={MODAL_ID}
+                    modalId={LOGIN_MODAL}
                     content={() => <AuthModalContent signInWithGoogle={this.signInWithGoogle} />}
                 />
                 <Navbar

@@ -1,9 +1,11 @@
 import { createStore } from "redux";
 
+import { PURCHASE_MODAL, APPOINTMENT_MODAL, LOGIN_MODAL } from "./modalNames";
+
 const modals = [
-    ["purchaseModal", false],
-    ["appointmentModal", false],
-    ["loginModal", false]
+    [PURCHASE_MODAL, false],
+    [APPOINTMENT_MODAL, false],
+    [LOGIN_MODAL, false]
 ];
 
 const initialStore = {
@@ -17,10 +19,10 @@ const reducer = (state = initialStore, action) => {
     switch (action.type) {
         case "TOGGLE_MODAL": {
 
-            const oldValue = state.modals.get(action.id);
+            const oldValue = state.modals.get(action.modalName);
 
             const modals = new Map(state.modals);
-            modals.set(action.id, !oldValue);
+            modals.set(action.modalName, !oldValue);
 
             return {
                 ...state,

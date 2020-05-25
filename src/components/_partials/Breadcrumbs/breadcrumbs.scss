@@ -4,8 +4,8 @@ $color: white;
 .breadcrumbs {
     background: $bg-color;
     position: sticky;
-    top: 6vh;
-    z-index: 3;
+    top: 7vh;
+    z-index: 2;
 
     &__paths-list {
         display: flex;
@@ -22,5 +22,11 @@ $color: white;
     &__link {
         text-decoration: none;
         color: $color;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .breadcrumbs {
+        top: 8vh;
     }
 }

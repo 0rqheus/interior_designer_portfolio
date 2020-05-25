@@ -14,6 +14,7 @@ $warning-font-size: 14px;
 
 $modal-top-margin: 30vh;
 $content-width: 40;
+$form-element-width: 90%;
 
 .modal {
     position: fixed;
@@ -102,7 +103,7 @@ $content-width: 40;
     }
 
     &__input {
-        width: $content-width * 1vw;
+        width: $form-element-width;
         height: 30px;
         padding: 5px;
         font-size: 16px;
@@ -110,7 +111,7 @@ $content-width: 40;
     }
 
     &__textarea {
-        width: $content-width * 1vw;
+        width: $form-element-width;
         padding: 5px;
         font-size: 16px;
         border: $border-size solid $border-color;
@@ -126,6 +127,20 @@ $content-width: 40;
         &:hover {
             background-color: $border-color;
             color: white;
+        }
+    }
+
+    &_invalid {
+        border-color: rgb(255, 68, 68);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .modal {
+    
+        &__container {
+            width: 85vw;
+            margin-top: 20vh;
         }
     }
 }
