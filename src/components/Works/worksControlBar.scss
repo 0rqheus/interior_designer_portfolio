@@ -12,23 +12,35 @@ $padding: 5px;
     justify-content: space-between;
     padding: $padding;
 
-    &__select {
-        padding: $padding;
-        background-color: $background;
-        border: $border-size solid $border-color;
-        appearance: none;
-    }
-
-    &__search-input {
-        padding: $padding;
-        width: $search-width * 1vw;
-        border: $border-size solid $border-color;
-    }
-
     &__selects-container {
         display: flex;
         justify-content: space-around;
         width: 18vw;
+    }
+
+    &__select {
+        padding: $padding;
+        border: $border-size solid $border-color;
+        background-color: $background;
+        appearance: none;
+    }
+
+    &__search-container {
+        width: $search-width * 1vw;
+        display: flex;
+    }
+
+    &__search-input {
+        width: 100%;
+        padding: $padding;
+        border: $border-size solid $border-color;
+    }
+
+    &__search-btn {
+        padding: $padding;
+        margin-left: 5px;
+        background-color: $background;
+        border: $border-size solid $border-color;
     }
 }
 
@@ -41,7 +53,7 @@ $padding: 5px;
             width: 30vw;
         }
 
-        &__search-input {
+        &__search-container {
             width: ($search-width - 5) * 1vw;
         }
     }
@@ -61,8 +73,8 @@ $padding: 5px;
             margin-bottom: 10px;
         }
 
-        &__search-input {
-            width: (($search-width - 9) * 2) * 1vw;
+        &__search-container {
+            width: 97vw;
         }
     }
 }

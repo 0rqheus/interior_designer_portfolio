@@ -166,34 +166,17 @@ export default class Works extends React.Component {
         });
     }
 
-    handleSearch = (event) => {
-
-        const search = event.target.value;
+    handleSearchInput = (event) => {
 
         this.setState({
-            search: search
+            search: event.target.value
         });
 
-        this.uploadData({
-            ...this.state,
-            search: search
-        });
+        
+    }
 
-        // this.index.search(search)
-        //     .then((results) => {
-
-        //         const data = results.hits.map(item => {
-        //             return {
-        //                 ...item,
-        //                 id: item.objectID
-        //             };
-        //         });
-
-        //         this.setState({
-        //             data: data
-        //         });
-        //     })
-        //     .catch(console.error);
+    handleSearch = () => {
+        this.uploadData({...this.state});
     }
 
     handlePrevPage = () => {
@@ -232,9 +215,11 @@ export default class Works extends React.Component {
                 handleSort={this.handleSort}
                 handleFilter={this.handleFilter}
                 handleSearch={this.handleSearch}
+                handleSearchInput={this.handleSearchInput}
                 search={this.state.search}
                 filter={this.state.filter}
                 sort={this.state.sort}
+                
             />
 
             {this.state.data.length !== 0

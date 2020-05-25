@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./authorizedContent.scss";
+
 const AuthorizedContent = (props) => {
     return (
         <>

@@ -1,18 +1,10 @@
-$main-color: dodgerblue;
-$secondary-color: white;
-
-$border-color: black;
-$border-size: 2px;
-
-$font-size: 18px;
-
 .mobile-nav {
     width: 100vw;
     display: none;
 
     &__logo {
-        font-size: $font-size + 6px;
-        color: $secondary-color;
+        font-size: 24px;
+        color: white;
         text-decoration: none;
     }
 }
@@ -24,23 +16,7 @@ $font-size: 18px;
     justify-content: space-around;
 }
 
-.mobile-user-info {
 
-    display: flex;
-    align-items: center;
-
-    &__img {
-        width: 4vh;
-        height: 4vh;
-        border-radius: 50%;
-    }
-
-    &__name {
-        color: lighten(black, 20%);
-        font-size: $font-size - 2px;
-        margin-right: 10px;
-    }
-}
 
 @media screen and (max-width: 900px) {
     .mobile-nav {

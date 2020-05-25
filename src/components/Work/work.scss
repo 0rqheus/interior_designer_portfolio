@@ -39,7 +39,7 @@ $slider-size: 50;
         }
 
         &__slider {
-            width: $slider-size * 2 * 1vw;
+            width: ($slider-size - 1) * 2 * 1vw;
             grid-row: 2;
             float: none;
         }

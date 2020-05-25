@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import AuthContent from "./AuthContent";
 
+import "./mobileNavList.scss";
+
 const MobileNavList = (props) => {
 
     const handleLinkClick = (event) => {

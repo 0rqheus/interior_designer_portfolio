@@ -1,0 +1,17 @@
+.mobile-user-info {
+
+    display: flex;
+    align-items: center;
+
+    &__img {
+        width: 4vh;
+        height: 4vh;
+        border-radius: 50%;
+    }
+
+    &__name {
+        color: lighten(black, 20%);
+        font-size: 16px;
+        margin-right: 10px;
+    }
+}

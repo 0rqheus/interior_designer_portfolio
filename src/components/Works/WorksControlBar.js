@@ -20,7 +20,10 @@ const WorksControlBar = (props) => {
                     <option value="neoclassic">Neoclassic</option>
                 </select>
             </div>
-            <input className="works-control-bar__search-input" onChange={props.handleSearch} defaultValue={props.search}/>
+            <div className="works-control-bar__search-container">
+                <input className="works-control-bar__search-input" onChange={props.handleSearchInput} defaultValue={props.search}/>
+                <button className="works-control-bar__search-btn" onClick={props.handleSearch}>Search</button>
+            </div>
         </div>
     );
 };

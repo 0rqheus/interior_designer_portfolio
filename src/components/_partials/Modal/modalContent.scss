@@ -35,3 +35,10 @@ $font-size: 18px;
         }
     }
 }
+
+
+@media screen and (max-width: 900px) {
+    .modal-content {
+        width: 75vw;
+    }
+}
