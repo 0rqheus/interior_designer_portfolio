@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { storage } from "../../firebase";
 
 import Loader from "../_partials/Loader/Loader";
 
@@ -13,22 +12,8 @@ export default class WorksItem extends React.Component {
 
         this.state = {
             showText: false,
-            showModal: false,
-            imageURL: null
+            showModal: false
         };
-
-        storage.ref().child(this.props.item.photos[0]).getDownloadURL()
-            .then((url) => {
-                this.setState({
-                    imageURL: url
-                });
-            })
-            .catch(err => {
-                console.error("Get image failed: " + err);
-                this.setState({
-                    imageURL: ""
-                });
-            });
     }
 
     mouseOverHandler = () => {
@@ -66,9 +51,9 @@ export default class WorksItem extends React.Component {
 
                 {this.state.imageURL !== null
                     ? (
-                        <Link to={`works/${this.props.item.id}`}>
+                        <Link to={`works/${this.props.item.objectID}`}>
                             <img className={this.getImageClasses(this.state.showText)}
-                                src={this.state.imageURL}
+                                src={this.props.item.photos[0]}
                                 alt={this.props.item.title}
                                 onMouseOver={this.mouseOverHandler}
                                 onMouseOut={this.mouseOutHandler}

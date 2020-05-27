@@ -1,6 +1,5 @@
 import React from "react";
-import { db } from "../../firebase";
-import algoliasearch from "algoliasearch";
+import { client } from "../../algolia";
 
 import "./works.scss";
 
@@ -14,129 +13,48 @@ export default class Works extends React.Component {
     constructor(props) {
         super(props);
 
-        const client = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, process.env.REACT_APP_ALGOLIA_SEARCH_KEY);
-        this.index = client.initIndex("works");
-
-        this.uploadData();
-
         this.state = {
             data: null,
 
             search: "",
-            sort: "recent",
+            sort: "date_desc",
             filter: "all",
 
             currentPage: 1,
-            pageAmount: 1,
-            firstDoc: null,
-            lastDoc: null,
-
-            isLoading: false
+            pageAmount: 1
         };
-    }
-    
 
-    setSearchQuery = async (search, collection) => {
-        // console.log("Search: " + search);
-
-        if(search !== "") {
-
-            // trigger loader
-            this.setState({data: null});
-
-            try {
-                // get all matched data from algolia
-                const results = await this.index.search(search);
-                const matchedTitles = results.hits.map(item => item.title);
-
-                return collection.where("title", "in", matchedTitles);
-    
-            } catch(err) {
-                console.error(err);
-            }
-        }
-
-        return collection;
+        this.uploadData();
     }
 
-    setFilterQuery = (filter, collection) => {
-        // console.log("Filter: " + filter);
 
-        return filter !== "all"
-            ? collection.where("style", "==", filter)
-            : collection;
-    }
+    uploadData = (query = { search: "", filter: "all", sort: "date_desc", currentPage: 1 }) => {
 
-    setSortQuery = (sort, collection) => {
+        const indexName = "myWorks";
+        const index = client.initIndex(`${indexName}_${query.sort}`);
 
-        // console.log("Sort:" + sort);
-
-        if (sort === "recent") {
-            return collection.orderBy("createdDate", "desc");
-
-        } else if (sort === "priceUp") {
-            return collection.orderBy("price");
-
-        } else if (sort === "priceDown") {
-            return collection.orderBy("price", "desc");
-
-        } else {
-            return collection;
-        }
-    }
-
-    setPaginationQuery = (pageType, pageSize, collection) => {
-
-        if (pageType === "next") {
-            return collection.startAfter(this.state.lastDoc).limit(pageSize);
-
-        } else if (pageType === "prev") {
-            return collection.endBefore(this.state.firstDoc).limitToLast(pageSize);
-
-        } else {
-            return collection.limit(pageSize);
-        }
-    }
-
-    uploadDataForPage = (querySnapshot) => {
-        const data = [];
-
-        querySnapshot.forEach((doc) => {
-            data.push({ id: doc.id, ...doc.data() });
-        });
-
-        this.setState({
-            data: data,
-            firstDoc: querySnapshot.docs[0],
-            lastDoc: querySnapshot.docs[querySnapshot.docs.length - 1]
-        });
-
-    }
-
-    uploadData = async(params = { search: "", filter: "all", sort: "recent", pageType: "" }) => {
-        // console.clear();
         const pageSize = 6;
-        const collection = db.collection("works");
+        const filter = query.filter;
 
-        let query = await this.setSearchQuery(params.search, collection);
-        query = this.setFilterQuery(params.filter, query);
-        query = this.setSortQuery(params.sort, query);
+        const params = {
+            page: query.currentPage - 1,
+            hitsPerPage: pageSize
+        };
 
-        query.get()
-            //  get all results to set page amount
-            .then(querySnapshot => {
+        if (filter !== "all")
+            params.filters = `style:${filter}`;
+
+            
+        index.search(query.search, params)
+            .then(results => {
                 this.setState({
-                    pageAmount: Math.ceil(querySnapshot.size / pageSize)
+                    data: results.hits,
+                    pageAmount: results.nbPages
                 });
-
-                // get data for specific page
-                this.setPaginationQuery(params.pageType, pageSize, query).get()
-                    .then(querySnapshot => this.uploadDataForPage(querySnapshot))
-                    .catch(console.error);
             })
             .catch(console.error);
-    }
 
+    }
 
     handleSort = (event) => {
         const sort = event.target.value;
@@ -165,48 +83,53 @@ export default class Works extends React.Component {
         });
     }
 
-    handleSearchInput = (event) => {
+    handleSearch = (event) => {
+        const search = event.target.value;
 
         this.setState({
-            search: event.target.value
+            search: search
         });
 
-        
+        this.uploadData({
+            ...this.state,
+            search: search
+        });
     }
 
-    handleSearch = () => {
-        this.uploadData({...this.state});
-    }
+    handlePagination = (event) => {
+        const pageType = event.target.dataset.pageType;
+        const currentPage = this.state.currentPage;
+        const pageAmount = this.state.pageAmount;
 
-    handlePrevPage = () => {
-        if (this.state.currentPage !== 1) {
-            this.setState({
-                currentPage: this.state.currentPage - 1
-            });
+        console.log(pageType, currentPage, pageAmount);
+
+        if (pageType === "next" && currentPage < pageAmount) {
+
+            const targetPage = currentPage + 1;
+
+            this.setState({ currentPage: targetPage });
 
             this.uploadData({
                 ...this.state,
-                pageType: "prev"
+                currentPage: targetPage
             });
-        }
-    }
 
-    handleNextPage = () => {
-        if (this.state.currentPage < this.state.pageAmount) {
-            this.setState({
-                currentPage: this.state.currentPage + 1
-            });
+        } else if (pageType === "previous" && currentPage !== 1) {
+
+            const targetPage = currentPage - 1;
+
+            this.setState({ currentPage: targetPage });
 
             this.uploadData({
                 ...this.state,
-                pageType: "next"
+                currentPage: targetPage
             });
         }
     }
 
     render() {
 
-        if (this.state.data === null) 
+        if (this.state.data === null)
             return <Loader width="95vw" height="95vh" />;
 
         return (<div className="works">
@@ -214,24 +137,23 @@ export default class Works extends React.Component {
                 handleSort={this.handleSort}
                 handleFilter={this.handleFilter}
                 handleSearch={this.handleSearch}
-                handleSearchInput={this.handleSearchInput}
                 search={this.state.search}
                 filter={this.state.filter}
                 sort={this.state.sort}
-                
+
             />
 
             {this.state.data.length !== 0
-                ? (<>
-                    <WorksList data={this.state.data} />
-                    <PaginationMenu
-                        onPrev={this.handlePrevPage}
-                        onNext={this.handleNextPage}
-                        currentPage={this.state.currentPage}
-                        pageAmount={this.state.pageAmount}
-                    />
-                </>)
-
+                ? (
+                    <>
+                        <WorksList data={this.state.data} />
+                        <PaginationMenu
+                            handlePagination={this.handlePagination}
+                            currentPage={this.state.currentPage}
+                            pageAmount={this.state.pageAmount}
+                        />
+                    </>
+                )
                 : (<h3>No results</h3>)
             }
         </div>);

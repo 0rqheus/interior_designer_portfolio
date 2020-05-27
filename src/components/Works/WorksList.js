@@ -9,7 +9,7 @@ const WorksList = (props) => {
     if (props.data === null) return null;
 
     const worksItems = props.data.map(el =>
-        <WorksItem key={el.id} item={el} />
+        <WorksItem key={el.objectID} item={el} />
     );
 
     return (
