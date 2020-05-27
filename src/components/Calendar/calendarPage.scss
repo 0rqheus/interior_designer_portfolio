@@ -1,7 +1,11 @@
+@import "../general";
+
 .calendar-page {
     display: flex;
     justify-content: flex-end;
-    min-height: 93vh;
+    min-height: $min-page-size;
+    margin-bottom: $margin-bottom;
+    background-color: $page-background-color;
 }
 
 @media screen and (max-width: 800px) {

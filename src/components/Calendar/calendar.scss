@@ -1,13 +1,4 @@
-$border-color: black;
-
-$month-background-color: #66b3ff;
-$weekday-background-color: #99ccff;
-
-$disabled-day-color: grey;
-$selected-day-background-color: #66b3ff;
-$selected-day-color: white;
-
-$td-background-color: white;
+@import "../general";
 
 $booked-hour-background-color: rgb(233, 96, 96);
 
@@ -16,7 +7,10 @@ $calendar-head-height: 20;
 $calendar-body-height: 80;
 $column-width: 84;
 
-$border-size: 1px;
+$calendar-border-size: 1px;
+
+$header-row-height: (round($calendar-head-height - $site-header-height)/2 - 1.5) * 1vh;
+$border: $calendar-border-size solid $dark-color;
 
 .calendar{
 
@@ -24,15 +18,15 @@ $border-size: 1px;
     table-layout: fixed;
 
     &__header {
-        height: (round($calendar-head-height - $site-header-height)/2 - 2) * 1vh;
-        border: $border-size solid $border-color;
-        background: $month-background-color;
+        height: $header-row-height;
+        border: $border;
+        background: lighten($main-color, 10%);
     }
 
     &__weekday{
-        height: (round($calendar-head-height - $site-header-height)/2 - 2.5) * 1vh;
-        border: $border-size solid $border-color;
-        background: $weekday-background-color;
+        height: $header-row-height;
+        border: $border;
+        background: lighten($main-color, 20%);
         overflow: hidden;
         white-space: nowrap;
 
@@ -48,24 +42,24 @@ $border-size: 1px;
         width: $column-width / 7 * 1vw;
         height: $calendar-body-height / 5 * 1vh;
         text-align: center;
-        border: $border-size solid $border-color;
+        border: $border;
 
         &:not(.calendar__disabled-day):hover {
-            background-color: darken($td-background-color, 5%);
+            background-color: darken($light-color, 5%);
         }
 
         &.calendar__selected-day:hover {
-            background-color: darken($selected-day-background-color, 5%);
+            background-color: lighten($main-color, 5%);
         }
     }
 
     &__disabled-day {
-        color: $disabled-day-color;
+        color: lighten($dark-color, 40%);
     }
 
     &__selected-day {
-        background-color: $selected-day-background-color;
-        color: $selected-day-color;
+        background-color: lighten($main-color, 10%);
+        color: $light-color;
     }
 
     &__nav-arrow {

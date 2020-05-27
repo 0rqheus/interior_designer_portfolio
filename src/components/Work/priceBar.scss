@@ -1,4 +1,5 @@
-$main-color: dodgerblue;
+@import "../general";
+
 $margin: 30px;
 
 .pricebar {
@@ -8,24 +9,24 @@ $margin: 30px;
     margin: $margin;
 
     &__price {
+        padding-top: 5px;
         color: $main-color;
         font-weight: bold;
         font-size: 30px;
-        padding-top: 5px;
     }
 
     &__buy-btn {
-        background-color: transparent;
-        border: 2px solid black;
-        margin-left: $margin;
         width: 100px;
         height: 40px;
+        margin-left: $margin;
+        border: $border-size solid $dark-color;
         font-weight: bold;
+        background-color: transparent;
 
         &:hover {
             background-color: $main-color;
             border: none;
-            color: white;
+            color: $light-color;
         }
     }
 

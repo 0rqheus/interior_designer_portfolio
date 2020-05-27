@@ -1,25 +1,29 @@
+@import "../general";
+
+$btn-size: 20px;
+
 .header {
-    min-height: 6vh;
-    display: flex;
-    align-items: center;
-    background-color: dodgerblue;
+    z-index: 3;
     position: sticky;
     top: 0px;
-    z-index: 3;
+    display: flex;
+    align-items: center;
+    min-height: 6vh;
+    background-color: $main-color;
 
     &__link {
         text-decoration: none;
-        color: black;
+        color: $dark-color;
     }
     
     &-btn {
-        width: 40px;
-        height: 20px;
+        width: $btn-size * 2;
+        height: $btn-size;
         border: none;
         background-image: url("../../assets/images/additional-menu-btn.png");
         background-color: transparent;
         background-repeat: no-repeat;
-        background-size: 20px 20px;
+        background-size: $btn-size $btn-size;
         background-position: center;   
     }
 }

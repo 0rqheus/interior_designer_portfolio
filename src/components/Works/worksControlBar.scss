@@ -1,15 +1,13 @@
-$border-color: black;
-$background: white;
+@import "../general";
 
 $control-bar-width: 70;
 $search-width: 50;
-$border-size: 2px;
 $padding: 5px;
 
 .works-control-bar {
-    width: $control-bar-width * 1vw;
     display: flex;
     justify-content: space-between;
+    width: $control-bar-width * 1vw;
     padding: $padding;
 
     &__selects-container {
@@ -20,15 +18,15 @@ $padding: 5px;
 
     &__select {
         padding: $padding;
-        border: $border-size solid $border-color;
-        background-color: $background;
+        border: $border-size solid $dark-color;
+        background-color: $page-background-color;
         appearance: none;
     }
 
     &__search-input {
         width: $search-width * 1vw;
         padding: $padding;
-        border: $border-size solid $border-color;
+        border: $border-size solid $dark-color;
     }
 }
 

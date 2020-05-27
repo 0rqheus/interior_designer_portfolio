@@ -17,9 +17,9 @@ $photo-max-size: 300px;
     }
 
     &__name {
-        width: 220px;
         display: none;
         position: absolute;
+        width: 220px;
 
         text-align: center;
         white-space: nowrap;

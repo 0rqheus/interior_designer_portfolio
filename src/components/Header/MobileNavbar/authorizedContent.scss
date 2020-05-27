@@ -1,3 +1,5 @@
+@import "../../general";
+
 .mobile-user-info {
 
     display: flex;
@@ -10,8 +12,8 @@
     }
 
     &__name {
-        color: lighten(black, 20%);
-        font-size: 16px;
         margin-right: 10px;
+        font-size: $main-font-size - 2px;
+        color: lighten($dark-color, 20%);
     }
 }

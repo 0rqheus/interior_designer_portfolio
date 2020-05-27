@@ -1,5 +1,9 @@
+@import "../general";
+
 .works {
-    min-height: 93vh;
+    min-height: $min-page-size;
+    margin-bottom: $margin-bottom;
+    background-color: $page-background-color;
 
     &__no-results {
         text-align: center;
