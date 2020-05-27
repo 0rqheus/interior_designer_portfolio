@@ -37,7 +37,7 @@ export default class Works extends React.Component {
     
 
     setSearchQuery = async (search, collection) => {
-        console.log("Search: " + search);
+        // console.log("Search: " + search);
 
         if(search !== "") {
 
@@ -111,11 +111,10 @@ export default class Works extends React.Component {
             lastDoc: querySnapshot.docs[querySnapshot.docs.length - 1]
         });
 
-        console.log(data);
     }
 
     uploadData = async(params = { search: "", filter: "all", sort: "recent", pageType: "" }) => {
-        console.clear();
+        // console.clear();
         const pageSize = 6;
         const collection = db.collection("works");
 
