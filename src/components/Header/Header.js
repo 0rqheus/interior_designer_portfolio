@@ -17,7 +17,7 @@ class Header extends React.Component {
         super(props);
 
         this.state = {
-            user: null
+            user: auth.currentUser
         };
     }
 
@@ -50,6 +50,7 @@ class Header extends React.Component {
     }
 
     render() {
+
         return (
             <header className="header">
                 <Modal

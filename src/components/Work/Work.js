@@ -27,14 +27,22 @@ export default class Work extends React.Component {
 
     uploadData = (id) => {
 
-        client.initIndex("myWorks").getObject(id).then(object => {
+        client.initIndex("myWorks").getObject(id)
+            .then(object => {
 
-            console.log(object);
+                console.log(object);
 
-            this.setState({
-                item: object
+                this.setState({
+                    item: object
+                });
+            })
+            .catch(err => {
+                if (err.status === 404) {
+                    this.setState({
+                        item: null
+                    });
+                }
             });
-        });
     }
 
 
@@ -43,21 +51,20 @@ export default class Work extends React.Component {
         if (this.state.item === null) {
             return <Redirect to="/404" />;
         } else if (this.state.item.objectID !== this.props.match.params.id) {
-            return <Loader width="95vw" height="95vh"/>;
+            return <Loader width="95vw" height="95vh" />;
         }
 
         return (
             <>
+                <Modal modalId={PURCHASE_MODAL} content={() => <BuyModalContent workId={this.props.match.params.id} />} />
                 <BreadCrumbs />
                 <div className="work">
-
-                    <Modal modalId={PURCHASE_MODAL} content={() => <BuyModalContent workId={this.props.match.params.id} />} />
 
                     <Slider containerClass={"work__slider"} photos={this.state.item.photos} />
 
                     <h5 className="work__name">{this.state.item.title}</h5>
 
-                    <PriceBar price={this.state.item.price}/>
+                    <PriceBar price={this.state.item.price} />
 
                     <p className="work__description">{this.state.item.description}</p>
 

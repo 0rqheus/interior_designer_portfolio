@@ -140,7 +140,6 @@ export default class Works extends React.Component {
                 search={this.state.search}
                 filter={this.state.filter}
                 sort={this.state.sort}
-
             />
 
             {this.state.data.length !== 0
@@ -154,7 +153,7 @@ export default class Works extends React.Component {
                         />
                     </>
                 )
-                : (<h3>No results</h3>)
+                : (<h3 className="works__no-results">No results</h3>)
             }
         </div>);
 

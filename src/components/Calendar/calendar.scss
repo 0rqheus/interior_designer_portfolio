@@ -35,6 +35,13 @@ $border-size: 1px;
         background: $weekday-background-color;
         overflow: hidden;
         white-space: nowrap;
+
+        &-value {
+
+            &_mobile {
+                display: none;
+            }
+        }
     }
 
     &__day {
@@ -74,11 +81,19 @@ $border-size: 1px;
     
         &__day {
             width: 100 / 7 * 1vh;
-            // height: $calendar-body-height / 5 * 1vh;
+            height: $calendar-body-height / 10 * 1vh;
         }
 
         &__weekday{
             width: 20px;  
+
+            &-value {
+                display: none;
+                
+                &_mobile {
+                    display: inline;
+                }
+            }
         }
     
     }
