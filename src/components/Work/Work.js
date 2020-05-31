@@ -51,7 +51,7 @@ export default class Work extends React.Component {
         if (this.state.item === null) {
             return <Redirect to="/404" />;
         } else if (this.state.item.objectID !== this.props.match.params.id) {
-            return <Loader width="95vw" height="95vh" />;
+            return <Loader width="95vw" height="72vh" />;
         }
 
         return (

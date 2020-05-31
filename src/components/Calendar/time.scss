@@ -1,6 +1,6 @@
 @import "../general";
 
-$side-padding: 2vw;
+$side-padding: 1vw;
 $top-down-padding: 2vh;
 
 $text-align: center;
@@ -20,6 +20,7 @@ $text-align: center;
     &__date {
         text-align: $text-align;
         line-height: 150%;
+        font-size: $main-font-size + 2px;
     }
 
     &__list {
@@ -42,6 +43,7 @@ $text-align: center;
 
     &__item_booked {
         background-color: rgb(233, 96, 96);
+        cursor: not-allowed;
     }
 }
 

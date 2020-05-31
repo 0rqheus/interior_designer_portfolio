@@ -19,8 +19,6 @@ class Time extends React.Component {
 
             const chosenDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), +hour);
 
-            console.log(hour, date, chosenDate);
-
             this.props.setChosenDate(chosenDate);
             this.props.toggleModal(APPOINTMENT_MODAL);
         }

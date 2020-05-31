@@ -6,6 +6,17 @@ import { APPOINTMENT_MODAL } from "../../modalNames";
 
 class ModalContent extends React.Component {
 
+    hangleChange = (event) => {
+        const target = event.target;
+
+        if(target.value.trim() === "") {
+            target.classList.add("modal-form_invalid");
+        } else {
+            target.classList.remove("modal-form_invalid");
+        }
+    } 
+
+
     handleSubmit = (event) => {
         event.preventDefault();
 
@@ -74,7 +85,7 @@ class ModalContent extends React.Component {
 
                     <div className="modal-form__container">
                         <label>Contacts</label>
-                        <input className="modal-form__input" ref={element => this.contacts = element} defaultValue={contacts} />
+                        <input className="modal-form__input" ref={element => this.contacts = element} defaultValue={contacts} onChange={this.hangleChange}/>
                     </div>
 
                     <div className="modal-form__container">

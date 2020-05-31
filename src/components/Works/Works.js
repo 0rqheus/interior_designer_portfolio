@@ -130,7 +130,7 @@ export default class Works extends React.Component {
     render() {
 
         if (this.state.data === null)
-            return <Loader width="95vw" height="95vh" />;
+            return <Loader width="95vw" height="72vh" />;
 
         return (<div className="works">
             <WorksControlBar

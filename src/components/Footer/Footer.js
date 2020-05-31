@@ -12,10 +12,10 @@ import "./footer.scss";
 const Footer = () => {
 
     const socialLinkIcons = [
-        { src: twitterLogo, alt: "twitter logo"},
-        { src: facebookLogo, alt: "facebook logo"},
-        { src: instagramLogo, alt: "instagram logo"},
-        { src: linkedInLogo, alt: "linkedin logo"},
+        { src: twitterLogo, alt: "twitter logo", href: "http://twitter.com" },
+        { src: facebookLogo, alt: "facebook logo", href: "http://fb.com" },
+        { src: instagramLogo, alt: "instagram logo", href: "http://instagram.com" },
+        { src: linkedInLogo, alt: "linkedin logo", href: "http://linkedin.com" },
     ];
 
 
