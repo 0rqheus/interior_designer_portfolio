@@ -5,7 +5,7 @@ import "./authContent.scss";
 
 const AuthContent = (props) => {
 
-    const user = props.user;
+    const { user } = props;
 
     return (
         <div className="auth-bar">

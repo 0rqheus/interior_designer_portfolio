@@ -6,9 +6,11 @@ import "./worksList.scss";
 
 const WorksList = (props) => {
 
-    if (props.data === null) return null;
+    const { data } = props;
 
-    const worksItems = props.data.map(el =>
+    if (data === null) return null;
+
+    const worksItems = data.map(el =>
         <WorksItem key={el.objectID} item={el} />
     );
 

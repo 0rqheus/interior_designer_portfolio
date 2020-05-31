@@ -5,7 +5,9 @@ import "./socialsList.scss";
 
 const SocialsIconList = (props) => {
 
-    const linkIcons = props.items.map((item, index) => {
+    const { items } = props;
+
+    const linkIcons = items.map((item, index) => {
         return <SocialsIconItem key={index} item={item}/>;
     });
 
