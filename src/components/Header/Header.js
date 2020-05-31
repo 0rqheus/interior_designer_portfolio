@@ -1,5 +1,5 @@
 import React from "react";
-import { auth, googleProvider } from "../../firebase";
+import { auth, googleProvider, facebookProvider } from "../../firebase";
 import { connect } from "react-redux";
 import { toggleModal } from "../../actions";
 import { LOGIN_MODAL } from "../../modalNames";
@@ -24,15 +24,23 @@ class Header extends React.Component {
     signInWithGoogle = () => {
 
         auth.signInWithPopup(googleProvider)
-            .then(result => {
-
-                this.props.toggleModal(LOGIN_MODAL);
-
-                this.setState({
-                    user: result.user
-                });
-            })
+            .then(this.signIn)
             .catch(console.error);
+    }
+
+    signInWithFacebook = () => {
+
+        auth.signInWithPopup(facebookProvider)
+            .then(this.signIn)
+            .catch(console.error);
+    }
+
+    signIn = (result) => {
+        this.props.toggleModal(LOGIN_MODAL);
+
+        this.setState({
+            user: result.user
+        });
     }
 
     handleLogout = () => {
@@ -51,11 +59,16 @@ class Header extends React.Component {
 
     render() {
 
+        const signInMethods = [
+            { name: "Google", signInMethod: this.signInWithGoogle },
+            { name: "Facebook", signInMethod: this.signInWithFacebook }
+        ];
+
         return (
             <header className="header">
                 <Modal
                     modalId={LOGIN_MODAL}
-                    content={() => <AuthModalContent signInWithGoogle={this.signInWithGoogle} />}
+                    content={() => <AuthModalContent signInMethods={signInMethods} />}
                 />
                 <Navbar
                     user={this.state.user}
