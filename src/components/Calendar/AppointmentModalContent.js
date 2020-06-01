@@ -38,7 +38,7 @@ class ModalContent extends React.Component {
         };
 
         if (day !== null) {
-            db.collection("appointments").day(day.id).update({
+            db.collection("appointments").doc(day.id).update({
                 hours: [...day.appointmentHours, newAppointment]
             });
 
