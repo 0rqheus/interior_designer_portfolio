@@ -1,17 +1,17 @@
 import React from "react";
 
 import Time from "./Time";
-import Calendar from "./Calendar";
+import Calendar from "./Calendar/Calendar";
 import Modal from "../_partials/Modal/Modal";
 import AppointmentModalContent from "./AppointmentModalContent";
 import { APPOINTMENT_MODAL } from "../../modalNames";
 
-import "./calendarPage.scss";
+import "./appointmentCalendar.scss";
 
-const CalendarPage = () => {
+const AppointmentCalendar = () => {
 
     return (
-        <div className="calendar-page" >
+        <div className="appointment-calendar" >
             <Modal modalId={APPOINTMENT_MODAL} content={AppointmentModalContent} />
             <Time/>
             <Calendar/>
@@ -19,4 +19,4 @@ const CalendarPage = () => {
     );
 };
 
-export default CalendarPage;
+export default AppointmentCalendar;

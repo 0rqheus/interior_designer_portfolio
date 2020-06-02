@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { client } from "../../algolia";
 import { PURCHASE_MODAL } from "../../modalNames";
@@ -12,64 +12,46 @@ import BuyModalContent from "./BuyModalContent";
 import BreadCrumbs from "../_partials/Breadcrumbs/Breadcrumbs";
 import PriceBar from "./PriceBar";
 
-export default class Work extends React.Component {
+const isObjectEmpty = (obj) => Object.getOwnPropertyNames(obj).length === 0;
 
-    constructor(props) {
-        super(props);
+const Work = (props) => {
 
-        this.uploadData(props.match.params.id);
+    const [item, setItem] = useState({});
 
-        this.state = {
-            item: {},
-        };
+    const id = props.match.params.id;
 
-    }
-
-    uploadData = (id) => {
-
+    if (isObjectEmpty(item)) {
         client.initIndex("myWorks").getObject(id)
-            .then(object => {
-
-                console.log(object);
-
-                this.setState({
-                    item: object
-                });
-            })
+            .then(object => setItem(object))
             .catch(err => {
-                if (err.status === 404) {
-                    this.setState({
-                        item: null
-                    });
-                }
+                if (err.status === 404) setItem(null);
             });
     }
 
 
-    render() {
-
-        if (this.state.item === null) {
-            return <Redirect to="/404" />;
-        } else if (this.state.item.objectID !== this.props.match.params.id) {
-            return <Loader width="95vw" height="72vh" />;
-        }
-
-        return (
-            <>
-                <Modal modalId={PURCHASE_MODAL} content={() => <BuyModalContent workId={this.props.match.params.id} />} />
-                <BreadCrumbs />
-                <div className="work">
-
-                    <Slider containerClass={"work__slider"} photos={this.state.item.photos} />
-
-                    <h5 className="work__name">{this.state.item.title}</h5>
-
-                    <PriceBar price={this.state.item.price} />
-
-                    <p className="work__description">{this.state.item.description}</p>
-
-                </div>
-            </>
-        );
+    if (item === null) {
+        return <Redirect to="/404" />;
+    } else if (isObjectEmpty(item)) {
+        return <Loader width="95vw" height="72vh" />;
     }
-}
+
+    return (
+        <>
+            <Modal modalId={PURCHASE_MODAL} content={() => <BuyModalContent workId={props.match.params.id} />} />
+            <BreadCrumbs />
+            <div className="work">
+
+                <Slider containerClass={"work__slider"} photos={item.photos} />
+
+                <h5 className="work__name">{item.title}</h5>
+
+                <PriceBar price={item.price} />
+
+                <p className="work__description">{item.description}</p>
+
+            </div>
+        </>
+    );
+};
+
+export default Work;

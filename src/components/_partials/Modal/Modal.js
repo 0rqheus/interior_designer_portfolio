@@ -1,38 +1,30 @@
 import React from "react";
-import { connect } from "react-redux";
-import { toggleModal } from "../../../actions";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./modal.scss";
 import "./modalContent.scss";
 import "./modalForm.scss";
 
-class Modal extends React.Component {
+const Modal = (props) => {
 
-    handleClick = () => {
-        this.props.toggleModal(this.props.modalId);
-    }
+    const dispatch = useDispatch();
+    const displayStatuses = useSelector(state => state.modals);
 
-    render() {
-        return (
-            <div className={`modal ${this.props.displayStatuses.get(this.props.modalId) ? "" : "modal_hidden"}`}>
-                <div className="modal__container">
-                    <span className="modal__close-btn" onClick={this.handleClick}>&times;</span>
+    return (
+        <div className={`modal ${displayStatuses.get(props.modalId) ? "" : "modal_hidden"}`}>
+            <div className="modal__container">
+                <span 
+                    className="modal__close-btn" 
+                    onClick={() => dispatch({type: "TOGGLE_MODAL", modalName: props.modalId})}
+                >
+                    &times;
+                </span>
 
-                    <this.props.content />
-                </div>
+                <props.content />
             </div>
-        );
-    }
+        </div>
+    );
 
-}
-
-const mapStateToProps = (state) => {
-    return {
-        displayStatuses: state.modals
-    };
 };
 
-
-const mapDispatchToProps = { toggleModal };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default Modal;

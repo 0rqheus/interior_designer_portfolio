@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { auth, googleProvider, facebookProvider } from "../../firebase";
-import { connect } from "react-redux";
-import { toggleModal } from "../../actions";
+import { useDispatch } from "react-redux";
 import { LOGIN_MODAL } from "../../modalNames";
 
 import Navbar from "./Navbar/Navbar";
@@ -11,80 +10,64 @@ import AuthModalContent from "./AuthModalContent";
 
 import "./header.scss";
 
-class Header extends React.Component {
+const Header = () => {
 
-    constructor(props) {
-        super(props);
+    const dispatch = useDispatch();
+    const [user, setUser] = useState(auth.currentUser);
 
-        this.state = {
-            user: auth.currentUser
-        };
-    }
-
-    signInWithGoogle = () => {
+    const signInWithGoogle = () => {
 
         auth.signInWithPopup(googleProvider)
-            .then(this.signIn)
+            .then(signIn)
             .catch(console.error);
-    }
+    };
 
-    signInWithFacebook = () => {
+    const signInWithFacebook = () => {
 
         auth.signInWithPopup(facebookProvider)
-            .then(this.signIn)
+            .then(signIn)
             .catch(console.error);
-    }
+    };
 
-    signIn = (result) => {
-        this.props.toggleModal(LOGIN_MODAL);
+    const signIn = (result) => {
+        dispatch({ type: "TOGGLE_MODAL", modalName: LOGIN_MODAL });
+        setUser(result.user);
+    };
 
-        this.setState({
-            user: result.user
-        });
-    }
-
-    handleLogout = () => {
+    const handleLogout = () => {
         auth.signOut()
-            .then(() => {
-                this.setState({
-                    user: null
-                });
-            })
+            .then(() => setUser(null))
             .catch(console.error);
-    }
+    };
 
-    handleLogin = () => {
-        this.props.toggleModal(LOGIN_MODAL);
-    }
+    const handleLogin = () => {
+        dispatch({ type: "TOGGLE_MODAL", modalName: LOGIN_MODAL });
+    };
 
-    render() {
 
-        const signInMethods = [
-            { name: "Google", signInMethod: this.signInWithGoogle },
-            { name: "Facebook", signInMethod: this.signInWithFacebook }
-        ];
+    const signInMethods = [
+        { name: "Google", signInMethod: signInWithGoogle },
+        { name: "Facebook", signInMethod: signInWithFacebook }
+    ];
 
-        return (
-            <header className="header">
-                <Modal
-                    modalId={LOGIN_MODAL}
-                    content={() => <AuthModalContent signInMethods={signInMethods} />}
-                />
-                <Navbar
-                    user={this.state.user}
-                    handleLogin={this.handleLogin}
-                    handleLogout={this.handleLogout}
-                />
-                <MobileNavbar
-                    user={this.state.user}
-                    handleLogin={this.handleLogin}
-                    handleLogout={this.handleLogout}
-                />
-            </header>
-        );
-    }
-}
+    return (
+        <header className="header">
+            <Modal
+                modalId={LOGIN_MODAL}
+                content={() => <AuthModalContent signInMethods={signInMethods} />}
+            />
+            <Navbar
+                user={user}
+                handleLogin={handleLogin}
+                handleLogout={handleLogout}
+            />
+            <MobileNavbar
+                user={user}
+                handleLogin={handleLogin}
+                handleLogout={handleLogout}
+            />
+        </header>
+    );
+};
 
-const mapDispatchToProps = { toggleModal };
-
-export default connect(null, mapDispatchToProps)(Header);
+export default Header;

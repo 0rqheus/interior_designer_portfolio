@@ -1,28 +1,26 @@
 import React from "react";
-import { connect } from "react-redux";
-import { toggleModal } from "../../actions";
+import { useDispatch } from "react-redux";
 import { PURCHASE_MODAL } from "../../modalNames";
 
 import "./priceBar.scss";
 
-class PriceBar extends React.Component {
+const PriceBar = (props) => {
 
-    handleClick = () => {
-        this.props.toggleModal(PURCHASE_MODAL);
-    }
+    const dispatch = useDispatch();
 
-    render() {
-        return (
-            <div className="pricebar">
-                <span className="pricebar__price">${this.props.price}</span>
+    return (
+        <div className="pricebar">
+            <span className="pricebar__price">${props.price}</span>
 
-                <button className="pricebar__buy-btn" onClick={this.handleClick}>Buy</button>
-            </div>
-        );
-    }
-}
+            <button
+                className="pricebar__buy-btn"
+                onClick={() => dispatch({ type: "TOGGLE_MODAL", modalName: PURCHASE_MODAL })}
+            >
+                Buy
+            </button>
+        </div>
+    );
 
+};
 
-const mapDispatchToProps = { toggleModal };
-
-export default connect(null, mapDispatchToProps)(PriceBar);
+export default PriceBar;

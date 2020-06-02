@@ -1,6 +1,6 @@
 @import "../general";
 
-.calendar-page {
+.appointment-calendar {
     display: flex;
     justify-content: flex-end;
     min-height: $min-page-size;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 800px) {
-    .calendar-page {
+    .appointment-calendar {
         flex-direction: column-reverse;
     }
 }

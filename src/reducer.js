@@ -1,5 +1,3 @@
-import { createStore } from "redux";
-
 import { PURCHASE_MODAL, APPOINTMENT_MODAL, LOGIN_MODAL } from "./modalNames";
 
 const modals = [
@@ -33,7 +31,7 @@ const reducer = (state = initialStore, action) => {
         case "SET_CHOSEN_DATE":
             return {
                 ...state,
-                chosenDate: action.date
+                chosenDate: action.chosenDate
             };
         case "SET_DAY_APPOINTMENTS":
             return {
@@ -54,4 +52,4 @@ const reducer = (state = initialStore, action) => {
 
 };
 
-export default createStore(reducer);
+export default reducer;
