@@ -2,10 +2,10 @@ $socials-list: 30px;
 
 .socials-list {
     display: flex;
-    width: 300px;
     justify-content: space-between;
-    list-style-type: none;
+    width: 300px;
     padding: 0px;
+    list-style-type: none;
 
     &__link {
         text-decoration: none;

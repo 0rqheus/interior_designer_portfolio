@@ -1,7 +1,6 @@
-$main-color: dodgerblue;
+@import "../general";
 
-$font-size: 16px;
-$side-padding: 2vw;
+$side-padding: 1vw;
 $top-down-padding: 2vh;
 
 $text-align: center;
@@ -9,30 +8,31 @@ $text-align: center;
 .time {
     width: 14.5vw;
     height: 100%;
-
     padding-right: $side-padding;
     padding-left: $side-padding;
 
     &__title {
         text-align: $text-align;
-        font-size: $font-size + 4px;
+        font-size: $main-font-size + 4px;
         color: $main-color;
     }
 
     &__date {
         text-align: $text-align;
+        line-height: 150%;
+        font-size: $main-font-size + 2px;
     }
 
     &__list {
-        list-style-type: none;
         padding: 0px;
         margin-top: 3vh;
+        list-style-type: none;
     }
 
     &__item {
-        font-size: $font-size;
         padding-top: $top-down-padding;
         padding-bottom: $top-down-padding;
+        font-size: $main-font-size - 2px;
         text-align: $text-align;
         cursor: pointer;
 
@@ -43,6 +43,7 @@ $text-align: center;
 
     &__item_booked {
         background-color: rgb(233, 96, 96);
+        cursor: not-allowed;
     }
 }
 

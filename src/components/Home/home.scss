@@ -1,5 +1,11 @@
+@import "../general";
+
 .home {
+
+    margin-bottom: $margin-bottom;
+
     &__section {
         height: 100vh;
+        background-color: $page-background-color;
     }
 }

@@ -6,6 +6,21 @@ import myPhoto from "../../assets/images/person.jpg";
 const About = () => {
 
     const bornYear = 1990;
+    const awards = [
+        "2012 - Main minimalism design",
+        "June 2017 - Best bedroom concept",
+        "March 2018 - 'Best ecology house' award"
+    ];
+
+    const awardsList = awards.map((item, index) => {
+        return (
+            <li key={index}>
+                <p className="about__description">
+                    {item}
+                </p>
+            </li>
+        );
+    });
 
     return (
         <div className="about">
@@ -24,7 +39,7 @@ const About = () => {
                         {"Nowadays i'm living in Kiew, Ukraine, also i got an education here in the National Design University. Moreover i passed NCIDQ exam in 2012 and got Council for Interior Design Qualification (CIDQ) certification."}
                     </p>
                     <p className="about__description">
-                        My favourite styles are minimalism and futurism.
+                        {"My favourite styles are minimalism and futurism."}
                     </p>
                 </section>
 
@@ -38,28 +53,14 @@ const About = () => {
                         {"And of course I can work with such programs like 'Adobe Photoshop', 'SketchUp Pro', 'Autodesk AutoCAD LT' and 'Blender 3D' on advanced level."}
                     </p>
                     <p className="about__description">
-                        I`ve worked in a lot of companies with very different people and can interract with anyone.
+                        {"I've worked in a lot of companies with very different people and can interract with anyone."}
                     </p>
                 </section>
 
                 <section>
                     <h4 className="about__header">Honours & Awards</h4>
                     <ul className="about__list">
-                        <li>
-                            <p className="about__description">
-                                2012 - Main minimalism design
-                            </p>
-                        </li>
-                        <li>
-                            <p className="about__description">
-                                June 2017 - Best bedroom concept
-                            </p>
-                        </li>
-                        <li>
-                            <p className="about__description">
-                                {"March 2018 - 'Best ecology house' award"}
-                            </p>
-                        </li>
+                        {awardsList}
                     </ul>
                 </section>
             </div>

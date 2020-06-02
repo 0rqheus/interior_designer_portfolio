@@ -1,22 +1,26 @@
+@import "../general";
+
 .contacts {
-    min-height: 93vh;
     display: flex;
     justify-content: space-around;
+    min-height: $min-page-size;
+    margin-bottom: $margin-bottom;
     padding: 3%;
     padding-top: 2vh;
+    background-color: $page-background-color;
 
     &__text {
         font-size: 20px;
     }
 
     &__socials-list {
-        list-style-type: none;
         margin-bottom: 5vh;
+        list-style-type: none;
     }
 
     &__link {
         text-decoration: none;
-        color: dodgerblue;
+        color: $main-color;
     }
 }
 

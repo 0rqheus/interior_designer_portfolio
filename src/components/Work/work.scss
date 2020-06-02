@@ -1,15 +1,19 @@
+@import "../general";
+
 $main-indent: 2%;
 $slider-size: 50;
 
 .work{
-    min-height: 93vh;
+    min-height: $min-page-size;
+    margin-bottom: $margin-bottom;
     padding: $main-indent;
+    background-color: $page-background-color;
 
     &__name {
-        text-align: center;
-        font-size: 36px;
         margin: 10px;
         padding: $main-indent;
+        text-align: center;
+        font-size: 36px;
     }
 
     &__description {
@@ -19,10 +23,10 @@ $slider-size: 50;
     }
 
     &__slider {
+        float: left;
         width: $slider-size * 1vw;
         height: $slider-size * 1vh;
         margin-right: $main-indent;
-        float: left;
     }
 }
 
@@ -39,9 +43,9 @@ $slider-size: 50;
         }
 
         &__slider {
-            width: ($slider-size - 1) * 2 * 1vw;
-            grid-row: 2;
             float: none;
+            grid-row: 2;
+            width: ($slider-size - 1) * 2 * 1vw;
         }
     
         &__description {

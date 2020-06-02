@@ -1,15 +1,17 @@
-$side-padding: 25px;
-$top-down-padding: 5px;
+@import "../../general";
+
+$vertical-padding: 25px;
+$horizontal-padding: 5px;
 
 .nav-list {
-    padding-right: $side-padding - 5px;
     display: flex;
     justify-content: space-around;
+    padding-right: $vertical-padding - 5px;
     list-style-type: none;
   
     &__item {
-        padding: $top-down-padding $side-padding $top-down-padding $side-padding;
-        border-right: 2px solid black;
+        padding: $horizontal-padding $vertical-padding $horizontal-padding $vertical-padding;
+        border-right: $border-size solid $dark-color;
     }
     
     &__item:last-child {

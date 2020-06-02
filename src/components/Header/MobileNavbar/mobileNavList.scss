@@ -1,23 +1,22 @@
-$secondary-color: white;
-$border-color: black;
+@import "../../general";
 
 $top-bottom-padding: 15px;
 
 .mobile-nav-list {
-    width: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    
+    width: 100%;
 
     margin: 0px;
     padding: 0px;
 
-    box-shadow: 1px 5px 5px darken($secondary-color, 20%);
-
     list-style-type: none;
-    background-color: $secondary-color;
+    
+    box-shadow: 1px 5px 5px darken($light-color, 20%);
+    background-color: $light-color;
 
     &_hidden {
         display: none;
@@ -30,11 +29,11 @@ $top-bottom-padding: 15px;
     
     &__link {
         text-decoration: none;
-        color: $border-color;
+        color: $dark-color;
     }
 
     &__auth {
-        border-top: 2px solid $border-color;
+        border-top: $border-size solid $dark-color;
         text-align: center;
     }
 }

@@ -1,0 +1,15 @@
+@import "../general";
+
+.appointment-calendar {
+    display: flex;
+    justify-content: flex-end;
+    min-height: $min-page-size;
+    margin-bottom: $margin-bottom;
+    background-color: $page-background-color;
+}
+
+@media screen and (max-width: 800px) {
+    .appointment-calendar {
+        flex-direction: column-reverse;
+    }
+}

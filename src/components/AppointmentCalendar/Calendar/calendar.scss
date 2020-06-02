@@ -1,0 +1,94 @@
+@import "../../general";
+
+$booked-hour-background-color: rgb(233, 96, 96);
+
+$site-header-height: 6;
+$calendar-head-height: 20;
+$calendar-body-height: 80;
+$column-width: 84;
+
+$calendar-border-size: 1px;
+
+$header-row-height: (round($calendar-head-height - $site-header-height)/2 - 1.5) * 1vh;
+$border: $calendar-border-size solid $dark-color;
+
+.calendar{
+
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    &__header {
+        height: $header-row-height;
+        border: $border;
+        background: lighten($main-color, 10%);
+    }
+
+    &__weekday{
+        height: $header-row-height;
+        border: $border;
+        background: lighten($main-color, 20%);
+        overflow: hidden;
+        white-space: nowrap;
+
+        &-value {
+
+            &_mobile {
+                display: none;
+            }
+        }
+    }
+
+    &__day {
+        width: $column-width / 7 * 1vw;
+        height: $calendar-body-height / 5 * 1vh;
+        text-align: center;
+        border: $border;
+
+        &:not(.calendar__disabled-day):hover {
+            background-color: darken($light-color, 5%);
+        }
+
+        &.calendar__selected-day:hover {
+            background-color: lighten($main-color, 5%);
+        }
+    }
+
+    &__disabled-day {
+        color: lighten($dark-color, 40%);
+    }
+
+    &__selected-day {
+        background-color: lighten($main-color, 10%);
+        color: $light-color;
+    }
+
+    &__nav-arrow {
+        cursor: pointer;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    .calendar{
+
+        width: 100%;
+    
+        &__day {
+            width: 100 / 7 * 1vh;
+            height: $calendar-body-height / 10 * 1vh;
+        }
+
+        &__weekday{
+            width: 20px;  
+
+            &-value {
+                display: none;
+                
+                &_mobile {
+                    display: inline;
+                }
+            }
+        }
+    
+    }
+}

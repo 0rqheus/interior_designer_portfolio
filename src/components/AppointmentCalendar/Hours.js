@@ -4,12 +4,13 @@ const Hours = (props) => {
 
     const startHour = 13;
     const endHour = 19;
+    const { day, date } = props;
 
     const isHourBooked = (() => {
 
-        if (props.day !== null) {
+        if (day !== null) {
             return (hour) => {
-                if (props.day.appointmentHours.find(item => item.hour === hour)) {
+                if (day.appointmentHours.find(item => item.hour === hour)) {
                     return "time__item time__item_booked";
                 } else {
                     return "time__item";
@@ -26,7 +27,7 @@ const Hours = (props) => {
     for (let i = startHour; i < endHour; i++) {
         hours.push(
             <li
-                key={`${props.date.getMonth()}-${props.date.getDate()}-${i}`}
+                key={`${date.getMonth()}-${date.getDate()}-${i}`}
                 className={isHourBooked(i)}
                 data-hour={i}
             >

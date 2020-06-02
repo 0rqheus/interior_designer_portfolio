@@ -1,19 +1,21 @@
+@import "../../general";
+
 .mobile-nav {
-    width: 100vw;
     display: none;
+    width: 100vw;
 
     &__logo {
-        font-size: 24px;
-        color: white;
+        font-size: $main-font-size + 6px;
+        color: $light-color;
         text-decoration: none;
     }
 }
 
 .mobile-nav-control-bar {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
 }
 
 

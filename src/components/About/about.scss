@@ -1,17 +1,18 @@
-$main-color: dodgerblue;
-$main-font-size: 18px;
+@import "../general";
 
 .about {
     display: flex;
+    margin-bottom: $margin-bottom;
+    background-color: $page-background-color;
 
     &__img-container{
-        min-height: 93vh;
+        min-height: $min-page-size;
     }
 
     &__person-img {
+        float: left;
         max-width: 50vw;
         height: 40vh;
-        float: left;
         margin: 5vh 5vw 0vh 5vw;
     }
 
@@ -41,14 +42,14 @@ $main-font-size: 18px;
         align-items: center;
 
         &__img-container{
-            background-color: transparent;
             min-height: 0px;
+            background-color: transparent;
         }
 
         &__person-img {
+            float: none;
             max-width: 90vw;
             height: auto;
-            float: none;
             margin: 0px;
             margin-top: 3vh;
         }

@@ -1,9 +1,11 @@
-$main-color: dodgerblue;
-$secondary-color: white;
-$main-font-size: 18px;
+@import "../general";
 
 .footer {
-    color: $secondary-color;
+    z-index: -1;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    color: $dark-color;
     background: black;
 
     &__content {
@@ -22,16 +24,16 @@ $main-font-size: 18px;
         padding-right: 5px;
 
         &-email {
-            font-size: $main-font-size;
             margin: 0px;
+            font-size: $main-font-size;
         }
     }
 
     &__rights {
-        text-align: center;
         margin: 0px;
         padding: 10px;
-        color: darken($secondary-color, 20%);
+        text-align: center;
+        color: darken($light-color, 20%);
     }
 }
 

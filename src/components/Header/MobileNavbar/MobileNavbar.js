@@ -1,46 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import MobileNavList from "./MobileNavList";
 
 import "./mobileNavbar.scss";
 
-export default class MobileNav extends React.Component {
+const MobileNav = (props) => {
 
-    constructor(props) {
-        super(props);
+    const [isExpanded, setIsExpanded] = useState(false);
 
-        this.state = {
-            expanded: false
-        };
-    }
+    const handleClick = () => {
+        setIsExpanded(!isExpanded);
+    };
 
-    handleClick = () => {
-        this.setState(state => ({
-            expanded: !state.expanded
-        }));
-    }
+    return (
+        <nav className="mobile-nav">
 
-    render() {
-        return (
-            <nav className="mobile-nav">
+            <div className="mobile-nav-control-bar">
+                <h1>
+                    <Link to="/" className="mobile-nav__logo">Orqheus Delusious</Link>
+                </h1>
+                <button className="header-btn" onClick={handleClick}></button>
+            </div>
 
-                <div className="mobile-nav-control-bar">
-                    <h1>
-                        <Link to="/" className="mobile-nav__logo">Orqheus Delusious</Link>
-                    </h1>
-                    <button className="header-btn" onClick={this.handleClick}></button>
-                </div>
+            <MobileNavList
+                handleClick={handleClick}
+                expanded={isExpanded}
+                user={props.user}
+                handleLogin={props.handleLogin}
+                handleLogout={props.handleLogout}
+            />
 
-                <MobileNavList
-                    handleClick={this.handleClick}
-                    expanded={this.state.expanded}
-                    user={this.props.user}
-                    handleLogin={this.props.handleLogin}
-                    handleLogout={this.props.handleLogout}
-                />
+        </nav>
+    );
 
-            </nav>
-        );
-    }
-}
+};
+
+export default MobileNav;

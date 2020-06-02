@@ -8,7 +8,7 @@ import About from "./About/About";
 import Works from "./Works/Works";
 import Work from "./Work/Work";
 import Contacts from "./Contacts/Contacts";
-import CalendarPage from "./Calendar/CalendarPage";
+import AppointmentCalendar from "./AppointmentCalendar/AppointmentCalendar";
 import NotFound from "./NotFound/NotFound";
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
 
                 <Route exact path="/contacts" component={Contacts} />
 
-                <Route path="/calendar" component={CalendarPage} />
+                <Route path="/calendar" component={AppointmentCalendar} />
 
                 <Route path="*" component={NotFound} />
 

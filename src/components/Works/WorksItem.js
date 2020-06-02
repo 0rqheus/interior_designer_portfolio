@@ -1,87 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { storage } from "../../firebase";
-
-import Loader from "../_partials/Loader/Loader";
-
 import "./worksItem.scss";
 
-export default class WorksItem extends React.Component {
+const WorksItem = (props) => {
 
-    constructor(props) {
-        super(props);
+    const [isTextVisible, setTextVisibility] = useState(false);
 
-        this.state = {
-            showText: false,
-            showModal: false,
-            imageURL: null
-        };
+    const mouseOverHandler = () => {
+        setTextVisibility(true);
+    };
 
-        storage.ref().child(this.props.item.photos[0]).getDownloadURL()
-            .then((url) => {
-                this.setState({
-                    imageURL: url
-                });
-            })
-            .catch(err => {
-                console.error("Get image failed: " + err);
-                this.setState({
-                    imageURL: ""
-                });
-            });
-    }
+    const mouseOutHandler = () => {
+        setTextVisibility(false);
+    };
 
-    mouseOverHandler = () => {
-        this.setState({
-            showText: true
-        });
-    }
-
-    mouseOutHandler = () => {
-        this.setState({
-            showText: false
-        });
-    }
-
-    getTextClasses = (showTextStatus) => {
+    const getTextClasses = (showTextStatus) => {
         let classesStr = "works-item__name";
 
         if (showTextStatus) classesStr += " works-item__name_show";
 
         return classesStr;
-    }
+    };
 
-    getImageClasses = (showTextStatus) => {
+    const getImageClasses = (showTextStatus) => {
         let classesStr = "works-item__photo";
 
         if (showTextStatus) classesStr += " works-item__photo_fade";
 
         return classesStr;
-    }
+    };
 
-    render() {
+    return (
+        <div className="works-item">
 
-        return (
-            <div className="works-item">
-
-                {this.state.imageURL !== null
-                    ? (
-                        <Link to={`works/${this.props.item.id}`}>
-                            <img className={this.getImageClasses(this.state.showText)}
-                                src={this.state.imageURL}
-                                alt={this.props.item.title}
-                                onMouseOver={this.mouseOverHandler}
-                                onMouseOut={this.mouseOutHandler}
-                                onClick={this.clickHandler}
-                            />
-                        </Link>
-                    )
-                    : <Loader width="300px" height="300px" />
-                }
+            <Link to={`works/${props.item.objectID}`}>
+                <img className={getImageClasses(isTextVisible)}
+                    src={props.item.photos[0]}
+                    alt={props.item.title}
+                    onMouseOver={mouseOverHandler}
+                    onMouseOut={mouseOutHandler}
+                />
+            </Link>
 
 
-                <p className={this.getTextClasses(this.state.showText)}>{this.props.item.title}</p>
-            </div>
-        );
-    }
-}
+            <p className={getTextClasses(isTextVisible)}>{props.item.title}</p>
+
+        </div>
+    );
+};
+
+export default WorksItem;

@@ -1,9 +1,0 @@
-.calendar-page {
-    display: flex;
-}
-
-@media screen and (max-width: 800px) {
-    .calendar-page {
-        flex-direction: column-reverse;
-    }
-}

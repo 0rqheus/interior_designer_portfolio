@@ -1,7 +1,6 @@
 import * as firebase from "firebase/app";
 
 import "firebase/firestore";
-import "firebase/storage";
 import "firebase/auth";
 
 const config = {
@@ -16,7 +15,7 @@ const config = {
 firebase.initializeApp(config);
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 export const auth = firebase.auth();
 export const db = firebase.firestore();
-export const storage = firebase.storage();
