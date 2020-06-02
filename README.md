@@ -1,4 +1,4 @@
-#Interior designer portfolio
+# Interior designer portfolio
 
 In this project you can see information about the designer, his works and order them. Also you can make an appointment using calendar. 
 
