@@ -11,7 +11,7 @@ const WorksList = (props) => {
     if (data === null) return null;
 
     const worksItems = data.map(el =>
-        <WorksItem key={el.objectID} item={el} />
+        <WorksItem key={el.id} item={el} />
     );
 
     return (

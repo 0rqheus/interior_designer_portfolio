@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { client } from "../../algolia";
+import { db } from "../../firebase";
 import { PURCHASE_MODAL } from "../../modalNames";
 
 import "./work.scss";
@@ -21,11 +21,15 @@ const Work = (props) => {
     const id = props.match.params.id;
 
     if (isObjectEmpty(item)) {
-        client.initIndex("myWorks").getObject(id)
-            .then(object => setItem(object))
-            .catch(err => {
-                if (err.status === 404) setItem(null);
-            });
+        db.collection("works").doc(id).get()
+            .then(doc => {
+                if(doc.exists) {
+                    setItem({id: doc.id, ...doc.data()});
+                } else {
+                    setItem(null);
+                }
+            })
+            .catch(console.error);
     }
 
 

@@ -33,7 +33,7 @@ const WorksItem = (props) => {
     return (
         <div className="works-item">
 
-            <Link to={`works/${props.item.objectID}`}>
+            <Link to={`works/${props.item.id}`}>
                 <img className={getImageClasses(isTextVisible)}
                     src={props.item.photos[0]}
                     alt={props.item.title}
