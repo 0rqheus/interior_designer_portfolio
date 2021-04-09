@@ -1,7 +1,15 @@
 # Interior designer portfolio
 
-In this project you can see information about the designer, his works and order them. Also you can make an appointment using calendar. 
+## Description
 
-Firestore is used as a database. As a multimedia storage, cloudinary is using.
+The project is an example of designer portfolio, with the following features:
+- About page with general information about designer and his experience
+- Gallery of works, where you can read about each and order it
+- Appointment calender, where you can make appointment with designer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technologies
+- React.js frontend framework
+- Redux.js state managment tool
+- Scss preprocesssor
+- Firebase as deploy platform
+- Cloudinary as media storage
