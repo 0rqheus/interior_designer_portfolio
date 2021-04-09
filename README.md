@@ -12,4 +12,5 @@ The project is an example of designer portfolio, with the following features:
 - Redux.js state managment tool
 - Scss preprocesssor
 - Firebase as deploy platform
+- Firestore database
 - Cloudinary as media storage
